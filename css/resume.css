@@ -33,6 +33,7 @@ h1 {
     font-weight: 400;
     font-size: var(--font-96);
     line-height: 116px;
+    color: #FFFFFF;
 }
 
 h2 {
@@ -40,6 +41,7 @@ h2 {
     font-size: var(--font-32);
     line-height: 150%;
     margin-bottom: 30px;
+    color: #FFFFFF;
 }
 
 p,
@@ -192,7 +194,8 @@ p {
 .header .header-links,
 .contact .contact-links,
 .header h1 {
-    color: var(--black);
+    
+    color: var(--white);
     margin-bottom: 45px;
 }
 
