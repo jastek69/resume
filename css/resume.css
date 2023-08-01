@@ -182,7 +182,7 @@ p {
 /* HEADER */
 
 .header {
-    background-image: url(/img/Background.png);
+    background-image: url('./img/Background.png');
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -220,7 +220,7 @@ p {
 /* === ABOUT === */
 
 .about {
-    background-image: url(/img/Vector.png);
+    background-image: url('./img/Vector.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -392,7 +392,7 @@ p {
 /* === SKILLS === */
 
 .skills {
-    background-image: url(../img/Vector.png);
+    background-image: url('./img/Vector.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -402,7 +402,7 @@ p {
 }
 
 .skills .skill-card {
-    background-image: url(../img/Background.png);
+    background-image: url('./img/Background.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #5b2e5b;
