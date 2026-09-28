@@ -216,23 +216,15 @@
         return stagePanel.animate(frames, { duration: opts.duration, easing: opts.easing, fill: "both" });
     }
 
-    function openPanel(panel) {
+    // Open the stage from any origin element; fill() writes the content
+    function openStage(origin, fill, variant) {
         if (source) return;
-        source = panel;
+        source = origin;
         lastFocus = document.activeElement;
 
-        // Build the stage copy: header + detail
         stageContent.innerHTML = "";
-        ["panel-tags", "panel-title", "panel-summary", "panel-meta"].forEach(function (cls) {
-            var el = panel.querySelector("." + cls);
-            if (el) stageContent.appendChild(el.cloneNode(true));
-        });
-        var title = stageContent.querySelector(".panel-title");
-        var titleText = title.textContent.trim();
-        title.textContent = titleText;
-        title.id = "stage-title";
-        var detail = panel.querySelector(".panel-detail").cloneNode(true);
-        stageContent.appendChild(detail);
+        fill(stageContent);
+        stagePanel.classList.toggle("stage-panel--doc", variant === "doc");
 
         var gap = window.innerWidth - root.clientWidth;
         document.body.style.paddingRight = gap ? gap + "px" : "";
@@ -240,9 +232,9 @@
         stage.hidden = false;
         stagePanel.scrollTop = 0;
 
-        var from = panel.getBoundingClientRect();
+        var from = origin.getBoundingClientRect();
         var to = stagePanel.getBoundingClientRect();
-        panel.classList.add("is-source");
+        origin.classList.add("is-source");
 
         requestAnimationFrame(function () {
             stage.classList.add("is-in");
@@ -255,6 +247,44 @@
 
         stagePanel.focus({ preventScroll: true });
     }
+
+    function openPanel(panel) {
+        openStage(panel, function (target) {
+            // Header + detail, copied from the card
+            ["panel-tags", "panel-title", "panel-summary", "panel-meta"].forEach(function (cls) {
+                var el = panel.querySelector("." + cls);
+                if (el) target.appendChild(el.cloneNode(true));
+            });
+            var title = target.querySelector(".panel-title");
+            title.textContent = title.textContent.trim();
+            title.id = "stage-title";
+            target.appendChild(panel.querySelector(".panel-detail").cloneNode(true));
+        });
+    }
+
+    /* ---------- Résumé viewer: same stage, document variant ---------- */
+
+    var resumeTpl = document.getElementById("resume-viewer");
+    // Phones and tablets rarely render PDFs inline; offer open/download instead
+    var inlinePdf = window.matchMedia("(min-width: 760px) and (pointer: fine)");
+
+    document.querySelectorAll("[data-open-resume]").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+            if (!resumeTpl) return;
+            e.preventDefault();
+            openStage(btn, function (target) {
+                target.appendChild(resumeTpl.content.cloneNode(true));
+                var frame = target.querySelector(".doc-frame");
+                var fallback = target.querySelector(".doc-fallback");
+                if (inlinePdf.matches) {
+                    frame.src = frame.dataset.src;
+                    fallback.hidden = true;
+                } else {
+                    frame.remove();
+                }
+            }, "doc");
+        });
+    });
 
     function closePanel() {
         if (!source || closing) return;
@@ -275,7 +305,7 @@
             document.body.style.paddingRight = "";
             source = null;
             closing = false;
-            var opener = panel.querySelector(".panel-open");
+            var opener = panel.querySelector && panel.querySelector(".panel-open");
             (opener || lastFocus || document.body).focus({ preventScroll: true });
         }
 
