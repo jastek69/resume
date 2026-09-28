@@ -41,6 +41,8 @@
     --recede-scale: 0.975;
     --recede-blur: 3px;
     --recede-opacity: 0.35;
+    --grow-hover: 1.045;
+    --shrink-rest: 0.985;
 
     /* Motion: speed, easing, duration */
     --dur-instant: 90ms;
@@ -75,6 +77,8 @@
         --dur-slow: 0.01ms;
         --lift-hover: 0px;
         --tilt-max: 0deg;
+        --grow-hover: 1;
+        --shrink-rest: 1;
     }
 }
 
@@ -752,28 +756,50 @@ body.stage-open .nav-wrap {
 
 /* ---------- Filters ---------- */
 
+/* The primary control for the Work section: full width, brighter edge */
 .filters {
     position: relative;
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 2px;
-    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    width: 100%;
+    padding: 8px 12px;
     border-radius: var(--r-pill);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    border-color: rgba(110, 231, 255, 0.28);
+    box-shadow:
+        var(--elev-rest),
+        0 0 0 1px rgba(110, 231, 255, 0.08),
+        0 10px 40px -12px rgba(110, 231, 255, 0.25);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.filters::-webkit-scrollbar {
+    display: none;
+}
+
+/* Keep the edge light inside the scroll box so it can't add a stray pixel */
+.filters::after {
+    inset: 0;
 }
 
 .filter {
     position: relative;
     z-index: 1;
-    min-height: 40px;
-    padding: 0 16px;
+    flex: 1 0 auto;
+    min-height: 46px;
+    padding: 0 18px;
     border: 0;
     border-radius: var(--r-pill);
     background: none;
     color: var(--ink-2);
-    font: 500 14px/1 var(--font-body);
+    font: 500 15px/1 var(--font-body);
+    white-space: nowrap;
     cursor: pointer;
-    transition: color var(--dur-fast) var(--ease-standard);
+    transition:
+        color var(--dur-fast) var(--ease-standard),
+        transform var(--dur-base) var(--ease-spring);
 }
 
 .filter:hover,
@@ -781,9 +807,28 @@ body.stage-open .nav-wrap {
     color: var(--ink);
 }
 
+/* Options swell toward the pointer */
+@media (hover: hover) {
+    .filter:hover {
+        transform: scale(1.14);
+        color: var(--accent);
+    }
+
+    .filter[aria-pressed="true"]:hover {
+        color: var(--ink);
+    }
+}
+
+.filter:active {
+    transform: scale(0.96);
+    transition-duration: var(--dur-instant);
+}
+
 .filter-bead {
-    top: var(--bead-y, 5px);
-    height: var(--bead-h, 40px);
+    top: var(--bead-y, 8px);
+    height: var(--bead-h, 46px);
+    background: linear-gradient(135deg, rgba(110, 231, 255, 0.22), rgba(167, 139, 250, 0.22));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 0 1px rgba(110, 231, 255, 0.35), 0 6px 20px -6px rgba(110, 231, 255, 0.45);
 }
 
 /* ---------- Project panels ---------- */
@@ -800,7 +845,7 @@ body.stage-open .nav-wrap {
     gap: 10px;
     padding: 24px;
     border-radius: var(--r-l);
-    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px));
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px)) scale(var(--s, 1));
     transition:
         transform var(--dur-base) var(--ease-standard),
         box-shadow var(--dur-base) var(--ease-standard),
@@ -808,11 +853,26 @@ body.stage-open .nav-wrap {
         opacity var(--dur-base) var(--ease-standard);
 }
 
+/* The active panel comes forward: larger, lifted, above its neighbors */
 .panel:hover,
-.panel:focus-within {
+.panel:has(:focus-visible) {
     --ty: var(--lift-hover);
-    box-shadow: var(--elev-hover);
+    --s: var(--grow-hover);
+    z-index: 2;
+    box-shadow: var(--elev-focus);
     border-color: var(--glass-edge);
+}
+
+/* …and the rest recede, so the active one stands out */
+@media (hover: hover) {
+    .panels:has(.panel:hover) .panel:not(:hover) {
+        opacity: 0.4;
+        --s: var(--shrink-rest);
+    }
+}
+
+.panels:has(.panel :focus-visible) .panel:not(:has(:focus-visible)) {
+    opacity: 0.4;
 }
 
 .panel.is-source {
@@ -1608,11 +1668,11 @@ html:not(.js) .role-inner {
 
 /* Panels keep their own transform for tilt, so reveal only fades them */
 .js .panel[data-reveal] {
-    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(calc(var(--ty, 0px) + 18px));
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(calc(var(--ty, 0px) + 18px)) scale(var(--s, 1));
 }
 
 .js .panel[data-reveal].is-in {
-    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px));
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px)) scale(var(--s, 1));
 }
 
 /* Once settled, panels get their interactive transitions back */
