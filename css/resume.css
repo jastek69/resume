@@ -324,6 +324,37 @@ p {
     color: var(--black);
 }
 
+/* Text-only project cards (no screenshot) */
+.projects .card--text {
+    height: auto;
+    min-height: 360px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.projects .card--text .card-description {
+    flex-grow: 1;
+    margin-bottom: 30px;
+}
+
+.projects .card .card-tags {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 12px;
+}
+
+.projects .card .card-buttons .card-button--private,
+.projects .card .card-buttons .card-button--private:hover {
+    background-color: transparent;
+    color: var(--white);
+    opacity: 0.5;
+    cursor: default;
+}
+
 /* === EXPERIENCE === */
 
 .experience-description {
