@@ -170,6 +170,7 @@
                                     <li>~420 Terraform resources and 14 DynamoDB tables. Agents re-read authoritative state instead of trusting event payloads.</li>
                                     <li>436 pytest + moto tests in GitHub Actions. They're published as reusable workflows that validate three descendant repos.</li>
                                     <li>Reports mapped to NIST CSF 2.0, CIS v8, PCI DSS 4.0, and ISO 27001, in English, Japanese, and Portuguese.</li>
+                                    <li>Operator observability for the agent layer: CloudWatch-backed status, invocation, error, duration, and trigger views across detection, action, and reporting agents.</li>
                                 </ul>
                             </div>
                         </div>
@@ -677,6 +678,13 @@
                 <p>Agentic reasoning does not require agentic authority.</p>
                 <footer>The more interesting question isn't “Can an AI agent do this?” It's “Should the agent be allowed to do this?”</footer>
             </blockquote>
+
+            <ul class="themes" aria-label="Engineering themes">
+                <li class="theme glass" data-reveal><h3>Identity &amp; authorization</h3><p>Layered RBAC, OAuth/JWT, least-privilege IAM, explicit role separation, auditable access decisions.</p></li>
+                <li class="theme glass" data-reveal><h3>Deterministic controls</h3><p>Privileged actions governed by explicit policy. AI is used for analysis and reporting, never as the authorizer.</p></li>
+                <li class="theme glass" data-reveal><h3>Compliance-aware infrastructure</h3><p>Terraform, AWS/GCP networking, CI/CD, event-driven automation, observability, and encryption, with data residency designed in.</p></li>
+                <li class="theme glass" data-reveal><h3>Blockchain foundations</h3><p>Solidity/EVM contracts, token and wallet workflows, DAO/DEX concepts, DeFi mechanics, and Web3 front ends.</p></li>
+            </ul>
         </section>
 
         <!-- EXPERIENCE -->
@@ -701,6 +709,7 @@
                                 <li>Progressed from IT consulting into cloud, DevOps, automation, security, and AI-assisted platform engineering, modernizing internal systems through reusable infrastructure and event-driven workflows.</li>
                                 <li>Implemented Terraform Infrastructure as Code and modular deployment patterns across AWS environments.</li>
                                 <li>Built Python/Bash automation and event-driven workflows with Lambda, SNS, SQS, and EventBridge to decouple services and reduce repetitive operational work.</li>
+                                <li>Managed containerized workloads with Docker and Kubernetes (EKS), and automated remediation with SSM Automation and Auto Scaling Group refresh.</li>
                                 <li>Designed AI-assisted document processing with Amazon Bedrock, including serverless PII detection and redaction using S3 Object Lambda, Comprehend, and Textract.</li>
                                 <li>Implemented GitHub Actions and Jenkins CI/CD, plus CloudWatch monitoring, alerting, and reporting, with IAM least privilege, encryption, and WAF controls.</li>
                             </ul>
@@ -781,14 +790,14 @@
             </div>
 
             <div class="skill-grid">
-                <div class="skill glass" data-reveal><h3><i class="fas fa-cloud" aria-hidden="true"></i>Cloud &amp; Platform Architecture</h3><p>AWS · GCP · multi-cloud · serverless · distributed and event-driven systems</p></div>
-                <div class="skill glass" data-reveal><h3><i class="fas fa-cubes" aria-hidden="true"></i>Infrastructure as Code</h3><p>Terraform · reusable modules · remote state and locking · modular stacks · Packer</p></div>
+                <div class="skill glass" data-reveal><h3><i class="fas fa-cloud" aria-hidden="true"></i>Cloud &amp; Platform Architecture</h3><p>AWS · GCP · Azure (foundational) · multi-cloud · serverless · distributed and event-driven systems</p></div>
+                <div class="skill glass" data-reveal><h3><i class="fas fa-cubes" aria-hidden="true"></i>Infrastructure as Code</h3><p>Terraform · reusable modules · remote state and locking · CloudFormation · Packer</p></div>
                 <div class="skill glass" data-reveal><h3><i class="fas fa-dharmachakra" aria-hidden="true"></i>Containers &amp; Kubernetes</h3><p>Docker · Kubernetes · Amazon EKS · GKE · Helm · Kong</p></div>
                 <div class="skill glass" data-reveal><h3><i class="fas fa-code-branch" aria-hidden="true"></i>CI/CD &amp; Automation</h3><p>GitHub Actions (reusable workflows) · Jenkins · Python · Bash · REST APIs</p></div>
                 <div class="skill glass" data-reveal><h3><i class="fas fa-brain" aria-hidden="true"></i>AI Platform Engineering</h3><p>Bedrock Converse · agentic AI · Step Functions · MCP · Pydantic · Vertex AI RAG</p></div>
                 <div class="skill glass" data-reveal><h3><i class="fas fa-shield-alt" aria-hidden="true"></i>Security / DevSecOps</h3><p>Cognito OAuth/RBAC · IAM least privilege · WAF · KMS · Secrets Manager · Snyk</p></div>
                 <div class="skill glass" data-reveal><h3><i class="fas fa-chart-line" aria-hidden="true"></i>Observability &amp; Reliability</h3><p>CloudWatch · Prometheus / Grafana / Loki · alarms · incident workflows · evidence</p></div>
-                <div class="skill glass" data-reveal><h3><i class="fas fa-project-diagram" aria-hidden="true"></i>Cloud Networking</h3><p>VPC · Transit Gateway · Route 53 · ALB/NLB · HA VPN · BGP · Cloud Router</p></div>
+                <div class="skill glass" data-reveal><h3><i class="fas fa-project-diagram" aria-hidden="true"></i>Cloud Networking</h3><p>VPC · Transit Gateway · Route 53 · ALB/NLB · HA VPN · BGP · Cloud Router · security groups · NACLs</p></div>
             </div>
 
             <div class="creds glass" data-reveal>

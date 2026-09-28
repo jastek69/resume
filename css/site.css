@@ -1132,6 +1132,31 @@ html:not(.js) .panel-meta::after {
     font-size: 15px;
 }
 
+.themes {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.theme {
+    padding: 20px;
+    border-radius: var(--r-m);
+}
+
+.theme h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.theme p {
+    color: var(--ink-2);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
 /* ---------- Experience ---------- */
 
 .timeline {
@@ -1540,7 +1565,8 @@ html:not(.js) .role-inner {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .skill-grid {
+    .skill-grid,
+    .themes {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -1609,7 +1635,8 @@ html:not(.js) .role-inner {
         grid-column: 1 / -1;
     }
 
-    .skill-grid {
+    .skill-grid,
+    .themes {
         grid-template-columns: 1fr;
     }
 
