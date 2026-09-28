@@ -264,7 +264,10 @@
         stage.classList.remove("is-in");
         document.body.classList.remove("stage-open");
 
+        var finished = false;
         function done() {
+            if (finished) return;
+            finished = true;
             stage.hidden = true;
             stageContent.innerHTML = "";
             panel.classList.remove("is-source");
@@ -281,6 +284,8 @@
             var to = stagePanel.getBoundingClientRect();
             var anim = morph(from, to, { duration: ms("--dur-base"), easing: token("--ease-exit"), reverse: true });
             anim.onfinish = function () { anim.cancel(); done(); };
+            // Background tabs may never fire onfinish; don't leave the page locked
+            setTimeout(function () { anim.cancel(); done(); }, ms("--dur-base") + 400);
         } else {
             done();
         }
