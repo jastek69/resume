@@ -130,9 +130,12 @@
 
             <div class="filters glass" role="group" aria-label="Filter projects by domain" data-reveal>
                 <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
-                <button type="button" class="filter" data-filter="security" aria-pressed="false">Security &amp; AI</button>
+                <button type="button" class="filter" data-filter="security" aria-pressed="false">Security &amp; IAM</button>
+                <button type="button" class="filter" data-filter="ai" aria-pressed="false">AI &amp; SEIR</button>
                 <button type="button" class="filter" data-filter="networking" aria-pressed="false">Networking</button>
                 <button type="button" class="filter" data-filter="kubernetes" aria-pressed="false">Kubernetes</button>
+                <button type="button" class="filter" data-filter="cicd" aria-pressed="false">CI/CD</button>
+                <button type="button" class="filter" data-filter="iac" aria-pressed="false">IaC</button>
                 <button type="button" class="filter" data-filter="blockchain" aria-pressed="false">Blockchain</button>
                 <span class="filter-bead" aria-hidden="true"></span>
             </div>
@@ -140,7 +143,7 @@
             <div class="panels" id="panels">
 
                 <!-- SEIR SOAR -->
-                <article class="panel glass" data-domain="security" data-reveal>
+                <article class="panel glass" data-domain="security ai cicd iac" data-reveal>
                     <p class="panel-tags">Security · AI Platform · Terraform</p>
                     <h3 class="panel-title"><button type="button" class="panel-open">SEIR: Serverless SOAR &amp; Agentic Security</button></h3>
                     <p class="panel-summary">A serverless SOAR platform on AWS where deterministic code holds security authority and Bedrock agents investigate and explain.</p>
@@ -183,7 +186,7 @@
                 </article>
 
                 <!-- LEGAL AI -->
-                <article class="panel glass" data-domain="security" data-reveal>
+                <article class="panel glass" data-domain="security ai cicd iac" data-reveal>
                     <p class="panel-tags">Security · AI Platform · Bedrock</p>
                     <h3 class="panel-title"><button type="button" class="panel-open">SEIR Legal AI</button></h3>
                     <p class="panel-summary">A legal drafting fleet built on the SOAR platform. Models only ever see redacted records, and IAM enforces it rather than prompts.</p>
@@ -224,7 +227,7 @@
                 </article>
 
                 <!-- AGENT 11 -->
-                <article class="panel glass" data-domain="security" data-reveal>
+                <article class="panel glass" data-domain="ai security" data-reveal>
                     <p class="panel-tags">AI Platform · Policy · Multi-cloud</p>
                     <h3 class="panel-title"><button type="button" class="panel-open">Agent 11: Policy-Aware Model Routing</button></h3>
                     <p class="panel-summary">Decide whether data <em>may</em> go to a model before deciding <em>which</em> model: SaaS, company cloud, or on-prem.</p>
@@ -264,7 +267,7 @@
                 </article>
 
                 <!-- VERTEX RAG -->
-                <article class="panel glass" data-domain="security" data-reveal>
+                <article class="panel glass" data-domain="ai security iac" data-reveal>
                     <p class="panel-tags">AI Platform · GCP · RAG</p>
                     <h3 class="panel-title"><button type="button" class="panel-open">Vertex AI RAG Corpora</button></h3>
                     <p class="panel-summary">Curated retrieval corpora for agents on Vertex AI, called from AWS Lambda without a single service-account key.</p>
@@ -304,7 +307,7 @@
                 </article>
 
                 <!-- COMFYUI -->
-                <article class="panel glass" data-domain="security" data-reveal>
+                <article class="panel glass" data-domain="ai iac cicd" data-reveal>
                     <p class="panel-tags">AI Platform · GPU · Packer</p>
                     <h3 class="panel-title"><button type="button" class="panel-open">ComfyUI GPU Worker</button></h3>
                     <p class="panel-summary">A GPU inference box on AWS that rebuilds without losing state, and consumes jobs from the SEIR queue.</p>
@@ -344,7 +347,7 @@
                 </article>
 
                 <!-- ZION TGW -->
-                <article class="panel glass" data-domain="networking" data-reveal>
+                <article class="panel glass" data-domain="networking iac" data-reveal>
                     <p class="panel-tags">Cloud Networking · Terraform modules</p>
                     <h3 class="panel-title"><button type="button" class="panel-open">Zion: Multi-Region Transit Gateway</button></h3>
                     <p class="panel-summary">Seven AWS regions on one Transit Gateway mesh, with geolocation DNS. Apps run anywhere, and personal data stays in Japan.</p>
@@ -386,7 +389,7 @@
                 </article>
 
                 <!-- JAPAN MEDICAL -->
-                <article class="panel glass" data-domain="networking" data-reveal>
+                <article class="panel glass" data-domain="networking security iac cicd" data-reveal>
                     <p class="panel-tags">Cloud Networking · AWS + GCP · Compliance</p>
                     <h3 class="panel-title"><button type="button" class="panel-open">Regulated Multi-Cloud Platform (APPI)</button></h3>
                     <p class="panel-summary">Patient data stays in Tokyo while AWS São Paulo and GCP New York compute read and write over Transit Gateway and HA VPN with BGP.</p>
@@ -427,7 +430,7 @@
                 </article>
 
                 <!-- GCP HUB SPOKE -->
-                <article class="panel glass" data-domain="networking" data-reveal>
+                <article class="panel glass" data-domain="networking security iac cicd" data-reveal>
                     <p class="panel-tags">Cloud Networking · GCP</p>
                     <h3 class="panel-title"><button type="button" class="panel-open">GCP HA VPN Hub-and-Spoke</button></h3>
                     <p class="panel-summary">A multi-project GCP mesh across four continents with HA VPN and BGP, and no service-account key files anywhere.</p>
@@ -469,7 +472,7 @@
                 </article>
 
                 <!-- KUBE AGENTIC -->
-                <article class="panel glass" data-domain="kubernetes security" data-reveal>
+                <article class="panel glass" data-domain="kubernetes security ai cicd" data-reveal>
                     <p class="panel-tags">Kubernetes · mTLS · MCP</p>
                     <h3 class="panel-title"><button type="button" class="panel-open">Kube Agentic</button></h3>
                     <p class="panel-summary">Zero-trust MCP for AI agents on Kubernetes: mTLS identity, deterministic playbooks, and gated <code>kubectl</code>.</p>
@@ -510,7 +513,7 @@
                 </article>
 
                 <!-- EKS KONG -->
-                <article class="panel glass" data-domain="kubernetes" data-reveal>
+                <article class="panel glass" data-domain="kubernetes iac" data-reveal>
                     <p class="panel-tags">Kubernetes · EKS · Kong</p>
                     <h3 class="panel-title"><button type="button" class="panel-open">EKS Platform with Kong Gateway</button></h3>
                     <p class="panel-summary">Terraform from VPC to runtime: EKS with the EBS CSI driver through IRSA, and Kong as the single front door, proven under load.</p>
@@ -551,7 +554,7 @@
                 </article>
 
                 <!-- UNISWAP V4 -->
-                <article class="panel glass" data-domain="blockchain" data-reveal>
+                <article class="panel glass" data-domain="blockchain cicd" data-reveal>
                     <p class="panel-tags">Solidity · Uniswap v4 · Hardhat</p>
                     <h3 class="panel-title"><button type="button" class="panel-open">Uniswap v4 Arbitrage Bot</button></h3>
                     <p class="panel-summary">Self-funding Uniswap v4 ↔ Sushiswap arbitrage using v4 flash accounting, plus a scanner that separates real opportunities from liquidity mirages.</p>

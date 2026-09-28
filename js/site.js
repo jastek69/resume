@@ -184,6 +184,7 @@
             if (!btn) return;
             buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
             moveBead(filterBead, btn, filters);
+            btn.scrollIntoView({ block: "nearest", inline: "nearest", behavior: motionOn() ? "smooth" : "auto" });
             applyFilter(btn.dataset.filter);
         });
         requestAnimationFrame(function () {
