@@ -3,467 +3,836 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="John Sweeney — cloud security and AI platform engineer. Terraform, AWS, GCP, Kubernetes, and DeFi smart contracts.">
+    <meta name="description" content="John Sweeney — DevOps and cloud architect. Secure platforms on AWS and GCP: Terraform, Kubernetes, event-driven systems, and agentic AI that keeps security authority deterministic.">
     <meta name="author" content="John Sweeney">
+    <meta name="theme-color" content="#05070d">
+    <meta property="og:title" content="John Sweeney — Cloud Security &amp; AI Platform Engineer">
+    <meta property="og:description" content="Secure, scalable platforms across AWS and GCP. AI investigates, code decides.">
+    <meta property="og:image" content="https://jastek69.github.io/resume/img/profile.jpg">
 
     <title>John Sweeney | Cloud Security &amp; AI Platform Engineer</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Agdasima&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link href="vendor/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/resume.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-links flex-start">
-            <div class="profile-container">
-                <img class="profile" src="./img/profile.jpg" alt="John Sweeney">
-                <img class="ring" src="./img/Ring.svg" alt="Ring Border">
-            </div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-            <ul class="flex-list list-items-circle">
-                <li>
-                    <a href="https://www.linkedin.com/in/john-sweeney-9b97262/" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/jastek69/" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </li>
-                
-               
+    <!-- Ambient vector field: grid, drifting light, pointer spotlight -->
+    <div class="ambient" aria-hidden="true">
+        <div class="ambient-grid"></div>
+        <div class="orb orb--a"></div>
+        <div class="orb orb--b"></div>
+        <div class="orb orb--c"></div>
+        <div class="spotlight"></div>
+    </div>
+
+    <!-- NAV -->
+    <header class="nav-wrap">
+        <nav class="nav glass" aria-label="Primary">
+            <a class="nav-mark" href="#top" aria-label="John Sweeney, back to top">JS</a>
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#principles">Principles</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="nav-bead" aria-hidden="true"></li>
             </ul>
-        </div>
-
-        <h1>
-            Hi, I’m John Sweeney<br />
-            Cloud Security &amp; AI Platform Engineer
-        </h1>
-
-        <ul class="contact-details flex-list">
-            <li>Los Angeles, CA</li>
-            <hr />
-            <li>Available on request</li>
-            <hr />
-            <li><a href="mailto:jastek.sweeney@gmail.com" style="border: none;">jastek.sweeney@gmail.com</a></li>
-        </ul>
+        </nav>
     </header>
-    <main>
 
-        <!-- ABOUT -->
+    <main id="main">
 
-        <section class="section about">
-            <h2>
-                DevOps Engineer and Cloud Infrastructure professional with experience designing, implementing, and supporting scalable cloud-native environments across AWS and GCP.
-Experienced in building and automating Infrastructure as Code (IaC), CI/CD pipelines, containerized workloads, and monitoring solutions to improve operational reliability, deployment consistency, and system scalability.
-Hands-on experience with AWS services, Terraform, Docker, Kubernetes (EKS), Jenkins, GitHub Actions, and scripting/automation using Python and Bash. Strong background in cloud networking, security, monitoring, and distributed systems.
+        <!-- HERO -->
+        <section class="hero" id="top">
+            <div class="hero-copy" data-reveal>
+                <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span>Los Angeles · AWS · GCP · Kubernetes</p>
+                <h1>John Sweeney</h1>
+                <p class="hero-role">DevOps Architect · Platform &amp; AI Platform Engineer</p>
+                <p class="lead">
+                    I design secure, scalable platforms across AWS and GCP: Infrastructure as Code, Kubernetes,
+                    event-driven systems, and agentic AI that keeps authorization deterministic, state durable,
+                    and evidence auditable.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn--primary" href="#work">View work</a>
+                    <a class="btn" href="#contact">Get in touch</a>
+                    <a class="btn btn--icon" href="https://github.com/jastek69/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a class="btn btn--icon" href="https://www.linkedin.com/in/john-sweeney-9b97262/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
 
-            </h2>
-            <ul class="achievements">
-                <li>🏆 <strong>Cloud Platforms</strong> — AWS (Lambda, API Gateway, Cognito, WAF, DynamoDB, VPC, Transit Gateway, EKS, RDS, Route 53, CloudWatch, Bedrock, Step Functions) • GCP (HA VPN, Cloud Router, Network Connectivity Center, Vertex AI)</li>
-                <li>🏆 <strong>DevOps &amp; Infrastructure</strong> — Terraform (modules, multi-region, multi-cloud) • Packer • Docker • Kubernetes (EKS, GKE) • Helm • Jenkins • GitHub Actions (reusable workflows)</li>
-                <li>🏆 <strong>Security &amp; AI Platform</strong> — Layered RBAC (Cognito, IAM) • WAF • SOAR automation • MCP control planes • agentic AI governance</li>
-                <li>🏆 <strong>Monitoring &amp; Operations</strong> — CloudWatch • Prometheus / Grafana / Loki • Alerting • Incident Response • Runbooks</li>
+            <div class="hero-visual" data-reveal>
+                <svg class="topology" viewBox="0 0 480 480" aria-hidden="true">
+                    <defs>
+                        <radialGradient id="nodeGlow">
+                            <stop offset="0" stop-color="#6ee7ff" stop-opacity=".9" />
+                            <stop offset="1" stop-color="#6ee7ff" stop-opacity="0" />
+                        </radialGradient>
+                        <linearGradient id="linkGrad" x1="0" x2="1">
+                            <stop offset="0" stop-color="#6ee7ff" />
+                            <stop offset="1" stop-color="#a78bfa" />
+                        </linearGradient>
+                    </defs>
+                    <circle class="orbit" cx="240" cy="240" r="200" />
+                    <circle class="orbit orbit--inner" cx="240" cy="240" r="140" />
+                    <g class="orbit-spin">
+                        <!-- seven regional hubs around the Tokyo hub (center) -->
+                        <g class="links">
+                            <line x1="240" y1="240" x2="240" y2="40" />
+                            <line x1="240" y1="240" x2="396" y2="115" />
+                            <line x1="240" y1="240" x2="435" y2="285" />
+                            <line x1="240" y1="240" x2="327" y2="420" />
+                            <line x1="240" y1="240" x2="153" y2="420" />
+                            <line x1="240" y1="240" x2="45" y2="285" />
+                            <line x1="240" y1="240" x2="84" y2="115" />
+                        </g>
+                        <g class="nodes">
+                            <g transform="translate(240 40)"><circle r="16" fill="url(#nodeGlow)" /><circle r="4" /><text y="-12">Tokyo</text></g>
+                            <g transform="translate(396 115)"><circle r="16" fill="url(#nodeGlow)" /><circle r="4" /><text y="-12">Hong Kong</text></g>
+                            <g transform="translate(435 285)"><circle r="16" fill="url(#nodeGlow)" /><circle r="4" /><text y="-12">Sydney</text></g>
+                            <g transform="translate(327 420)"><circle r="16" fill="url(#nodeGlow)" /><circle r="4" /><text y="24">São Paulo</text></g>
+                            <g transform="translate(153 420)"><circle r="16" fill="url(#nodeGlow)" /><circle r="4" /><text y="24">New York</text></g>
+                            <g transform="translate(45 285)"><circle r="16" fill="url(#nodeGlow)" /><circle r="4" /><text y="-12">California</text></g>
+                            <g transform="translate(84 115)"><circle r="16" fill="url(#nodeGlow)" /><circle r="4" /><text y="-12">London</text></g>
+                        </g>
+                    </g>
+                </svg>
+                <div class="portrait glass">
+                    <img src="./img/profile.jpg" alt="Portrait of John Sweeney" width="220" height="220">
+                </div>
+            </div>
+
+            <ul class="metrics" aria-label="Platform at a glance">
+                <li class="metric glass" data-reveal><span class="metric-value">~420</span><span class="metric-label">Terraform resources in SEIR</span></li>
+                <li class="metric glass" data-reveal><span class="metric-value">436</span><span class="metric-label">unit tests, no live AWS needed</span></li>
+                <li class="metric glass" data-reveal><span class="metric-value">14</span><span class="metric-label">DynamoDB tables of operational memory</span></li>
+                <li class="metric glass" data-reveal><span class="metric-value">33</span><span class="metric-label">controlled MCP tools</span></li>
+                <li class="metric glass" data-reveal><span class="metric-value">7</span><span class="metric-label">AWS regions on one TGW mesh</span></li>
             </ul>
         </section>
 
-        <!-- PROJECTS -->
-
-        <section class="section projects">
-            <div class="flex-between">
-                <h2>Featured cloud &amp; AI engineering</h2>
-
-                <a href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/README.md" class="projects-link flex-between" target="_blank" rel="noopener">
-                    Full portfolio <img src="./img/ArrowUpRight.svg" alt="Arrow" style="margin-left: 8px; opacity: 0.7;">
-                </a>
+        <!-- WORK -->
+        <section class="section" id="work" aria-labelledby="work-title">
+            <div class="section-head" data-reveal>
+                <p class="eyebrow">Selected platform &amp; architecture engineering</p>
+                <h2 id="work-title">Work</h2>
+                <p class="section-sub">Open any panel for the problem, the design, and what it proved. Full case studies and code live on GitHub.</p>
             </div>
 
-            <div class="cards flex-center">
-                <div class="card card--text">
-                    <p class="card-tags">Security · AI Platform · Terraform</p>
-                    <h3 class="card-title">SEIR — Serverless SOAR</h3>
-                    <p class="card-description">Three-layer RBAC, autonomous WAF correlation feeding four parallel response agents, threat-intel enrichment, and an agentic Bedrock tier behind an MCP control plane. 436 unit tests.</p>
-
-                    <div class="card-buttons">
-                        <a href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" class="card-button--site" target="_blank" rel="noopener">Case study</a>
-                        <span class="card-button--code card-button--private" title="Private repository — available on request">Private repo</span>
-                    </div>
-                </div>
-                <div class="card card--text">
-                    <p class="card-tags">Security · AI Platform · Bedrock</p>
-                    <h3 class="card-title">SEIR Legal AI</h3>
-                    <p class="card-description">A legal drafting fleet built on the SOAR platform. Models only see redacted records, enforced by IAM rather than prompts. Includes a Counsel Console, a legal MCP server, and OpenSearch retrieval.</p>
-
-                    <div class="card-buttons">
-                        <a href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/legal-platform/README.md" class="card-button--site" target="_blank" rel="noopener">Case study</a>
-                        <span class="card-button--code card-button--private" title="Private repository — available on request">Private repo</span>
-                    </div>
-                </div>
-                <div class="card card--text">
-                    <p class="card-tags">Kubernetes · mTLS · MCP</p>
-                    <h3 class="card-title">Kube Agentic</h3>
-                    <p class="card-description">Zero-trust MCP for AI agents on Kubernetes: mTLS identity, deterministic playbooks, and gated kubectl. One YAML tree for kind, GKE, and EKS.</p>
-
-                    <div class="card-buttons">
-                        <a href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/kube-agentic/README.md" class="card-button--site" target="_blank" rel="noopener">Case study</a>
-                        <span class="card-button--code card-button--private" title="Private repository — available on request">Private repo</span>
-                    </div>
-                </div>
-                <div class="card card--text">
-                    <p class="card-tags">Cloud Networking · Terraform modules</p>
-                    <h3 class="card-title">Zion — Multi-Region Transit Gateway</h3>
-                    <p class="card-description">Seven AWS regions, Transit Gateway mesh, geolocation DNS, Japan-only data residency, and self-hosted Prometheus / Grafana / Loki.</p>
-
-                    <div class="card-buttons">
-                        <a href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/transit-gateway/README.md" class="card-button--site" target="_blank" rel="noopener">Case study</a>
-                        <a href="https://github.com/jastek69/tfe-zion-armageddon-bhoejm" class="card-button--code" target="_blank" rel="noopener">Code</a>
-                    </div>
-                </div>
-                <div class="card card--text">
-                    <p class="card-tags">Cloud Networking · AWS + GCP</p>
-                    <h3 class="card-title">Japan Medical — APPI Cross-Cloud</h3>
-                    <p class="card-description">Patient data stays in Tokyo while AWS São Paulo and GCP New York compute read and write over Transit Gateway and HA VPN with BGP.</p>
-
-                    <div class="card-buttons">
-                        <a href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" class="card-button--site" target="_blank" rel="noopener">Case study</a>
-                        <span class="card-button--code card-button--private" title="Private repository — available on request">Private repo</span>
-                    </div>
-                </div>
-                <div class="card card--text">
-                    <p class="card-tags">Cloud Networking · GCP</p>
-                    <h3 class="card-title">GCP HA VPN Hub-and-Spoke</h3>
-                    <p class="card-description">Six-project GCP mesh across four continents, with HA VPN + BGP, Network Connectivity Center, and keyless service-account impersonation.</p>
-
-                    <div class="card-buttons">
-                        <a href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/gcp-hub-spoke/README.md" class="card-button--site" target="_blank" rel="noopener">Case study</a>
-                        <a href="https://github.com/jastek69/gcp-ha-vpn-hub-spokes-SA-scaffolding" class="card-button--code" target="_blank" rel="noopener">Code</a>
-                    </div>
-                </div>
+            <div class="filters glass" role="group" aria-label="Filter projects by domain" data-reveal>
+                <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
+                <button type="button" class="filter" data-filter="security" aria-pressed="false">Security &amp; AI</button>
+                <button type="button" class="filter" data-filter="networking" aria-pressed="false">Networking</button>
+                <button type="button" class="filter" data-filter="kubernetes" aria-pressed="false">Kubernetes</button>
+                <button type="button" class="filter" data-filter="blockchain" aria-pressed="false">Blockchain</button>
+                <span class="filter-bead" aria-hidden="true"></span>
             </div>
+
+            <div class="panels" id="panels">
+
+                <!-- SEIR SOAR -->
+                <article class="panel glass" data-domain="security" data-reveal>
+                    <p class="panel-tags">Security · AI Platform · Terraform</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">SEIR: Serverless SOAR &amp; Agentic Security</button></h3>
+                    <p class="panel-summary">A serverless SOAR platform on AWS where deterministic code holds security authority and Bedrock agents investigate and explain.</p>
+                    <p class="panel-meta"><span class="lock"><i class="fas fa-lock" aria-hidden="true"></i> Private · available for demos</span></p>
+                    <div class="panel-detail">
+                        <p class="rule">Bedrock explains. It never authorizes.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>An API Gateway authorizer proves <em>who</em> the caller is, not <em>what they may do</em>.</li>
+                                    <li>Tokens get issued, never used, and never revoked.</li>
+                                    <li>WAF telemetry is written, not read, and findings arrive without context.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>Three-layer authorization: API Gateway scopes → in-Lambda group claims → IAM.</li>
+                                    <li>EventBridge fans each WAF finding out to four parallel agents: playbook, token safety, intel enrichment, threat assessment.</li>
+                                    <li>Four Step Functions + Bedrock Converse investigations with read-only tool loops, structured submit, and explicit termination.</li>
+                                    <li>Cognito OAuth/RBAC-protected FastMCP control plane exposing 33 controlled tools.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>~420 Terraform resources and 14 DynamoDB tables. Agents re-read authoritative state instead of trusting event payloads.</li>
+                                    <li>436 pytest + moto tests in GitHub Actions. They're published as reusable workflows that validate three descendant repos.</li>
+                                    <li>Reports mapped to NIST CSF 2.0, CIS v8, PCI DSS 4.0, and ISO 27001, in English, Japanese, and Portuguese.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">Terraform · Python/Pydantic · Lambda · API Gateway · Cognito · WAF · EventBridge · Step Functions · DynamoDB · S3 · Bedrock Converse · MCP</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- LEGAL AI -->
+                <article class="panel glass" data-domain="security" data-reveal>
+                    <p class="panel-tags">Security · AI Platform · Bedrock</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">SEIR Legal AI</button></h3>
+                    <p class="panel-summary">A legal drafting fleet built on the SOAR platform. Models only ever see redacted records, and IAM enforces it rather than prompts.</p>
+                    <p class="panel-meta"><span class="lock"><i class="fas fa-lock" aria-hidden="true"></i> Private · available for demos</span></p>
+                    <div class="panel-detail">
+                        <p class="rule">Redact before the model.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>Drafting sources hold student identity, medical detail, and education records (PHI and FERPA).</li>
+                                    <li>Model-confident citations are a liability, and every one has to be verifiable.</li>
+                                    <li>Attorneys and paralegals need different entitlements on web, chat, and API.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>Agent roles are denied <code>s3:GetObject</code>. The only read path is a Comprehend + Comprehend Medical redaction gateway, and scanned PDFs fail closed.</li>
+                                    <li>Graduated autonomy (observe → draft → notify), set live in SSM. No tier ever files, serves, or emails anyone.</li>
+                                    <li>Citation sidecars are marked <code>[VERIFY]</code>. Semantic search stays off until it beats BM25 on a counsel-graded set.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>~460 Terraform resources in one apply, sharing SOAR's Cognito pool, WAF, API, and jobs module.</li>
+                                    <li>238 pytest tests plus a retrieval golden-eval set.</li>
+                                    <li>Built for a real practice, across two case types with different retention rules.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">Bedrock · Step Functions · Comprehend Medical · OpenSearch · Cognito · SSM · Terraform · MCP</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/legal-platform/README.md" target="_blank" rel="noopener">Case study</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AGENT 11 -->
+                <article class="panel glass" data-domain="security" data-reveal>
+                    <p class="panel-tags">AI Platform · Policy · Multi-cloud</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">Agent 11: Policy-Aware Model Routing</button></h3>
+                    <p class="panel-summary">Decide whether data <em>may</em> go to a model before deciding <em>which</em> model: SaaS, company cloud, or on-prem.</p>
+                    <p class="panel-meta"><span class="lock"><i class="fas fa-lock" aria-hidden="true"></i> Private · available for demos</span></p>
+                    <div class="panel-detail">
+                        <p class="rule">Classify before transmit.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>Agents hard-code <code>if sensitive: use_model_x()</code>, coupling business code to infrastructure.</li>
+                                    <li>That coupling blurs four separate questions: policy, service, network, and routing.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>Logical destinations (<code>EXTERNAL_FM</code>, <code>COMPANY_CLOUD_LLM</code>, <code>COMPANY_ONPREM_LLM</code>) stand in for vendors.</li>
+                                    <li>Independent evaluators for data, model, tool, and user policy, plus runtime health and network path, then a policy-safe fallback.</li>
+                                    <li>Every routing decision records why a route was chosen or blocked, as typed telemetry.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>Live labs: MCP on AWS EC2 reaching a GCP-hosted Llama over private IPsec and a home-network Ollama.</li>
+                                    <li>~430 inline contract tests, written test-first ahead of registry features.</li>
+                                    <li>The typed-domain-model approach was carried into SEIR.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">Python · Pydantic · MCP · AWS EC2 · GCP · IPsec VPN · Llama · Ollama</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/agent11/README.md" target="_blank" rel="noopener">Case study</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- VERTEX RAG -->
+                <article class="panel glass" data-domain="security" data-reveal>
+                    <p class="panel-tags">AI Platform · GCP · RAG</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">Vertex AI RAG Corpora</button></h3>
+                    <p class="panel-summary">Curated retrieval corpora for agents on Vertex AI, called from AWS Lambda without a single service-account key.</p>
+                    <p class="panel-meta"><span class="lock"><i class="fas fa-lock" aria-hidden="true"></i> Private · available for demos</span></p>
+                    <div class="panel-detail">
+                        <p class="rule">Keyless across clouds.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>Agents need domain knowledge from a curated corpus, not the open web.</li>
+                                    <li>Calling GCP from AWS usually means a JSON key stored somewhere in AWS.</li>
+                                    <li>Raising <code>top_k</code> to 10 still returned 8 chunks from one document.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>Four purpose-built corpora on the serverless RAG Engine with <code>text-embedding-005</code>.</li>
+                                    <li>Workload Identity Federation lets Lambda roles call Vertex AI.</li>
+                                    <li>Corpus IDs live in SOAR's SSM registry. A per-document chunk cap fixes single-source dominance.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>~1,340 documents indexed, with create, import, rebuild, and cleanup scripts.</li>
+                                    <li>Credential-free integration between the AWS agent platform and GCP retrieval.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">Vertex AI RAG Engine · Workload Identity Federation · Terraform · Lambda · SSM · Python</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/vertex-rag/README.md" target="_blank" rel="noopener">Case study</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- COMFYUI -->
+                <article class="panel glass" data-domain="security" data-reveal>
+                    <p class="panel-tags">AI Platform · GPU · Packer</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">ComfyUI GPU Worker</button></h3>
+                    <p class="panel-summary">A GPU inference box on AWS that rebuilds without losing state, and consumes jobs from the SEIR queue.</p>
+                    <p class="panel-meta"><span class="lock"><i class="fas fa-lock" aria-hidden="true"></i> Private · available for demos</span></p>
+                    <div class="panel-detail">
+                        <p class="rule">S3 is the source of truth.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>GPU boxes accumulate hand-made state that disappears when the instance is replaced.</li>
+                                    <li>Idle GPUs are expensive, so the box must stop, start, and resize safely.</li>
+                                    <li>Model buckets are easy to over-share, and just as easy to lock yourself out of.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>Packer golden AMI. <code>user_data</code> restores models, workflows, and certificates from S3 on every boot.</li>
+                                    <li>Vertical scaling in place with a 60-second Route 53 TTL, so no Elastic IP is needed.</li>
+                                    <li>Wired to SEIR's <code>POST /jobs</code> → SQS pipeline through SSM contracts only.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>An AMI rebake replaces the instance and restores full working state.</li>
+                                    <li>Cost guide across L4, A10G, L40S, and T4, with spot savings of about 60–70%.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">Packer · Terraform · EC2 GPU · S3 · SQS · Route 53 · SSM</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/comfyui-stability/README.md" target="_blank" rel="noopener">Case study</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ZION TGW -->
+                <article class="panel glass" data-domain="networking" data-reveal>
+                    <p class="panel-tags">Cloud Networking · Terraform modules</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">Zion: Multi-Region Transit Gateway</button></h3>
+                    <p class="panel-summary">Seven AWS regions on one Transit Gateway mesh, with geolocation DNS. Apps run anywhere, and personal data stays in Japan.</p>
+                    <p class="panel-meta"><a class="code-link" href="https://github.com/jastek69/tfe-zion-armageddon-bhoejm" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Public repo</a></p>
+                    <div class="panel-detail">
+                        <p class="rule">Forward, don't store.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>Seven copy-pasted region stacks: one change meant seven edits.</li>
+                                    <li>One DNS record sent every customer to Tokyo.</li>
+                                    <li>Syslog and personal data could not be stored abroad.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>Hubs in Tokyo, Hong Kong, Sydney, California, New York, London, and São Paulo.</li>
+                                    <li>A <code>regional-network</code> + <code>regional-site</code> module pair driven by a single sites map.</li>
+                                    <li>Route 53 geolocation to the nearest ALB. Tokyo is the only writer to Aurora, over private paths.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>~100 Terraform resources expressed as five reusable modules.</li>
+                                    <li>Scripted verification of reachability, blocked HTTPS, RDS writes, and Secrets Manager.</li>
+                                    <li>Self-hosted Prometheus / Grafana / Loki over the mesh, so metrics never leave Japan.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">Transit Gateway · Route 53 · ALB · Aurora · VPC endpoints · Terraform · Prometheus · Grafana · Loki</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/transit-gateway/README.md" target="_blank" rel="noopener">Case study</a>
+                            <a class="btn" href="https://github.com/jastek69/tfe-zion-armageddon-bhoejm" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- JAPAN MEDICAL -->
+                <article class="panel glass" data-domain="networking" data-reveal>
+                    <p class="panel-tags">Cloud Networking · AWS + GCP · Compliance</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">Regulated Multi-Cloud Platform (APPI)</button></h3>
+                    <p class="panel-summary">Patient data stays in Tokyo while AWS São Paulo and GCP New York compute read and write over Transit Gateway and HA VPN with BGP.</p>
+                    <p class="panel-meta"><span class="lock"><i class="fas fa-lock" aria-hidden="true"></i> Private · available for demos</span></p>
+                    <div class="panel-detail">
+                        <p class="rule">Degrade, but never violate residency.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>Japanese patient data must physically stay in Japan, even for overseas doctors.</li>
+                                    <li>São Paulo staff run on AWS and New York staff run on GCP.</li>
+                                    <li>Auditors have to follow where every read and write travels.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>Tokyo is the data authority. São Paulo and New York are stateless compute.</li>
+                                    <li>Transit Gateway plus Cloud HA VPN with 4 redundant BGP tunnels form an auditable data corridor.</li>
+                                    <li>One global URL: CloudFront + WAF, origins cloaked, and PHI never cached.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>6 reusable modules and 4 independently deployable stacks, ~310 Terraform resources.</li>
+                                    <li>Bedrock-drafted, translated incident reports, with a human who verifies before anything is final.</li>
+                                    <li>Staged apply and destroy, SSM sanity checks, and a Jenkins pipeline.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">Transit Gateway · GCP HA VPN · Cloud Router · BGP · CloudFront · Aurora MySQL · KMS · Bedrock · Terraform</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- GCP HUB SPOKE -->
+                <article class="panel glass" data-domain="networking" data-reveal>
+                    <p class="panel-tags">Cloud Networking · GCP</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">GCP HA VPN Hub-and-Spoke</button></h3>
+                    <p class="panel-summary">A multi-project GCP mesh across four continents with HA VPN and BGP, and no service-account key files anywhere.</p>
+                    <p class="panel-meta"><a class="code-link" href="https://github.com/jastek69/gcp-ha-vpn-hub-spokes-SA-scaffolding" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Public repo</a></p>
+                    <div class="panel-detail">
+                        <p class="rule">Adding a project is a map entry.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>Downloaded JSON keys are the most common way GCP credentials leak.</li>
+                                    <li>IAM and network have different lifecycles.</li>
+                                    <li>Each new spoke multiplies gateways, tunnels, interfaces, and peers.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>Bootstrap / infra split: identities are seeded once, and the network rebuilds freely.</li>
+                                    <li>Service-account impersonation through ADC locally and Workload Identity Federation in CI.</li>
+                                    <li>A single <code>tunnels</code> map drives the whole mesh through flattened locals.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>Six projects on four continents, built from seven reusable modules.</li>
+                                    <li>Makefile, staged apply and destroy, CI bootstrap, and a "doctor" diagnostic.</li>
+                                    <li>Delivered by a seven-engineer team.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">GCP · HA VPN · Cloud Router · BGP · Network Connectivity Center · Terraform · WIF</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/gcp-hub-spoke/README.md" target="_blank" rel="noopener">Case study</a>
+                            <a class="btn" href="https://github.com/jastek69/gcp-ha-vpn-hub-spokes-SA-scaffolding" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- KUBE AGENTIC -->
+                <article class="panel glass" data-domain="kubernetes security" data-reveal>
+                    <p class="panel-tags">Kubernetes · mTLS · MCP</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">Kube Agentic</button></h3>
+                    <p class="panel-summary">Zero-trust MCP for AI agents on Kubernetes: mTLS identity, deterministic playbooks, and gated <code>kubectl</code>.</p>
+                    <p class="panel-meta"><span class="lock"><i class="fas fa-lock" aria-hidden="true"></i> Private · available for demos</span></p>
+                    <div class="panel-detail">
+                        <p class="rule">The LLM narrates. Code authorizes.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>Once an agent reaches the API server, every verb in its ServiceAccount is in play.</li>
+                                    <li>Pod network reachability gets treated as trust.</li>
+                                    <li>Duplicate AWS and GCP YAML trees drift apart.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>nginx requires a client certificate from a lab CA before any request reaches MCP.</li>
+                                    <li>Thin MCP control plane. <code>kubectl</code> lives only in the executor.</li>
+                                    <li><code>restart_deployment</code> returns 403 unless the caller sends <code>approved=true</code> and a named approver.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>~50 shared manifests deploy unchanged to kind, GKE, and EKS.</li>
+                                    <li>44 pytest tests pin the governance invariants in CI.</li>
+                                    <li>An agent holding a rogue-CA certificate fails closed.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">Kubernetes · EKS · GKE · kind · nginx mTLS · MCP · Python</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/kube-agentic/README.md" target="_blank" rel="noopener">Case study</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- EKS KONG -->
+                <article class="panel glass" data-domain="kubernetes" data-reveal>
+                    <p class="panel-tags">Kubernetes · EKS · Kong</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">EKS Platform with Kong Gateway</button></h3>
+                    <p class="panel-summary">Terraform from VPC to runtime: EKS with the EBS CSI driver through IRSA, and Kong as the single front door, proven under load.</p>
+                    <p class="panel-meta"><a class="code-link" href="https://github.com/jastek69/anton-basic-eks-updated-helm" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Public repo</a></p>
+                    <div class="panel-detail">
+                        <p class="rule">"Is it working?" needs evidence.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>A bare EKS cluster can't run stateful workloads.</li>
+                                    <li>Exposing every service directly scatters auth, rate limits, and routing.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>Two-AZ VPC, NAT, EKS in <code>API</code> auth mode, and a private node group.</li>
+                                    <li>An IRSA role for the EBS CSI controller, installed through the Helm provider.</li>
+                                    <li>Kong ingress with key-auth and rate-limit plugins.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>~30 Terraform resources stand up a working cluster.</li>
+                                    <li>k6 runs show the 5-per-minute limit counting down to 429.</li>
+                                    <li>Serves as the platform layer for Kube Agentic.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">Terraform · Amazon EKS · Helm · IRSA · EBS CSI · Kong · k6</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/eks-ebs/README.md" target="_blank" rel="noopener">Case study</a>
+                            <a class="btn" href="https://github.com/jastek69/anton-basic-eks-updated-helm" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- UNISWAP V4 -->
+                <article class="panel glass" data-domain="blockchain" data-reveal>
+                    <p class="panel-tags">Solidity · Uniswap v4 · Hardhat</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">Uniswap v4 Arbitrage Bot</button></h3>
+                    <p class="panel-summary">Self-funding Uniswap v4 ↔ Sushiswap arbitrage using v4 flash accounting, plus a scanner that separates real opportunities from liquidity mirages.</p>
+                    <p class="panel-meta"><a class="code-link" href="https://github.com/jastek69/trading_bot-master" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Public repo</a></p>
+                    <div class="panel-detail">
+                        <p class="rule">Verify before trading.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>Cross-DEX arbitrage needs inventory, or a flash loan with a fee.</li>
+                                    <li>v4's singleton PoolManager broke every existing V2/V3 integration.</li>
+                                    <li>A large, persistent spread usually means one side has no liquidity.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>Both legs run inside <code>unlockCallback</code>, and only the net is settled.</li>
+                                    <li>Prices come from <code>StateView</code>, and trades are simulated with the official <code>V4Quoter</code>.</li>
+                                    <li>The scanner flags pairs as <code>thin v4 side</code> instead of ranking them.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>Pinning the fork block took the tests from ~60 s and flaky to ~6 s and stable.</li>
+                                    <li>Optional risk telemetry feeds a SOAR pipeline.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">Solidity · Uniswap v4 · Sushiswap · Hardhat · ethers</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/blockchain/trading-bot-v4.md" target="_blank" rel="noopener">Case study</a>
+                            <a class="btn" href="https://github.com/jastek69/trading_bot-master" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- YIELD FARM -->
+                <article class="panel glass" data-domain="blockchain" data-reveal>
+                    <p class="panel-tags">Solidity · Aave V3 · Balancer</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">Leveraged Yield Farm on Aave V3</button></h3>
+                    <p class="panel-summary">A Compound V2 → Aave V3 migration with zero-fee Balancer flash loans and a health-factor safety model measured on a mainnet fork.</p>
+                    <p class="panel-meta"><span class="lock"><i class="fas fa-lock" aria-hidden="true"></i> Private · available for demos</span></p>
+                    <div class="panel-detail">
+                        <p class="rule">Exit reads live debt.</p>
+                        <div class="detail-grid">
+                            <div>
+                                <h4>Problem</h4>
+                                <ul>
+                                    <li>The Compound V2 loop only paid because COMP rewards covered the spread.</li>
+                                    <li>Aave governance set DAI's loan-to-value to zero.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Design</h4>
+                                <ul>
+                                    <li>USDC with 75% LTV covers the strategy's 70% borrow ratio.</li>
+                                    <li>Flash-loan entry: borrow 70%, supply 100%, borrow back to repay.</li>
+                                    <li>Exit flash-loans the <em>current</em> variable debt, so interest never leaves residue.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Impact</h4>
+                                <ul>
+                                    <li>A full-cycle fork test: 120 USDC in returned 120.10, with zero debt left.</li>
+                                    <li>An honest verdict: the levered position earns ~1.3% APY, less than unlevered supply.</li>
+                                    <li>A halt flag blocks opening a position and never blocks exiting.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="stack">Solidity · Aave V3 · Balancer · Hardhat</p>
+                        <div class="panel-links">
+                            <a class="btn btn--primary" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/blockchain/yield-farm-aave-v3.md" target="_blank" rel="noopener">Case study</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Earlier Web3 work -->
+            <details class="archive glass" data-domain="blockchain" data-reveal>
+                <summary>
+                    <span>Earlier Web3 work: DeFi ecosystem, DEX, DAO</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </summary>
+                <div class="archive-body">
+                    <ul class="archive-list">
+                        <li><span>DefiEcosystem: video demo, part 1</span><span class="archive-links"><a href="https://youtu.be/nJDNXK3zOsA" target="_blank" rel="noopener">Video</a><a href="https://github.com/jastek69/DefiEcoSystem" target="_blank" rel="noopener">Code</a></span></li>
+                        <li><span>DefiEcosystem: code walkthrough, part 2</span><span class="archive-links"><a href="https://youtu.be/_SwimVjuV8U" target="_blank" rel="noopener">Video</a><a href="https://github.com/jastek69/DefiEcoSystem" target="_blank" rel="noopener">Code</a></span></li>
+                        <li><span>Flash-loan pool and trader contracts (Sepolia)</span><span class="archive-links"><a href="https://sepolia.etherscan.io/address/0xa14FFb7b509829b04c26d031D644037b6c8BD272#code" target="_blank" rel="noopener">Pool</a><a href="https://sepolia.etherscan.io/address/0x30Ba04E9c1601E0CEab141dD106Bfe6Cc9a3a824#code" target="_blank" rel="noopener">Trader</a></span></li>
+                        <li><span>Sobek Market: AMM exchange front end (React)</span><span class="archive-links"><a href="https://github.com/jastek69/defiecosystem_frontend_amm1" target="_blank" rel="noopener">Code</a></span></li>
+                        <li><span>Dark Unicorn Market: AMM exchange front end (React)</span><span class="archive-links"><a href="https://github.com/jastek69/defiecosystem_frontend2_amm2" target="_blank" rel="noopener">Code</a></span></li>
+                        <li><span>Decentralized exchange (React, Truffle)</span><span class="archive-links"><a href="https://github.com/jastek69/blockchain-developer-bootcamp" target="_blank" rel="noopener">Code</a></span></li>
+                        <li><span>DAO: decentralized autonomous organization (React)</span><span class="archive-links"><a href="https://github.com/jastek69/DAO" target="_blank" rel="noopener">Code</a></span></li>
+                    </ul>
+                </div>
+            </details>
+
+            <p class="section-foot" data-reveal>
+                <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/README.md" target="_blank" rel="noopener">Full architecture portfolio on GitHub <img src="./img/ArrowUpRight.svg" alt="" width="14" height="14"></a>
+            </p>
         </section>
 
-        <section class="section projects">
-            <div class="flex-between">
-                <h2>Blockchain &amp; DeFi</h2>
-
-                <a href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/domains/blockchain.md" class="projects-link flex-between" target="_blank" rel="noopener">
-                    Blockchain domain <img src="./img/ArrowUpRight.svg" alt="Arrow" style="margin-left: 8px; opacity: 0.7;">
-                </a>
+        <!-- PRINCIPLES -->
+        <section class="section" id="principles" aria-labelledby="principles-title">
+            <div class="section-head" data-reveal>
+                <p class="eyebrow">How I build agentic systems</p>
+                <h2 id="principles-title">AI investigates. Code decides.</h2>
+                <p class="section-sub">
+                    The goal isn't to replace deterministic security engineering with AI. It's to define where AI
+                    adds value, where it should not have authority, and how the two operate together safely.
+                </p>
             </div>
 
-            <div class="cards flex-center">
-                <div class="card card--text">
-                    <p class="card-tags">Solidity · Uniswap v4 · Hardhat</p>
-                    <h3 class="card-title">Uniswap v4 Arbitrage Bot</h3>
-                    <p class="card-description">Self-funding Uniswap v4 ↔ Sushiswap arbitrage using v4 flash accounting, plus a pair scanner that separates real opportunities from liquidity mirages.</p>
+            <ol class="pipeline" data-reveal>
+                <li class="stage-node glass"><span class="node-tech">Pydantic</span><span class="node-verb">validates</span><span class="node-note">Typed domain objects at every boundary</span></li>
+                <li class="stage-node glass"><span class="node-tech">Fusion.py</span><span class="node-verb">decides</span><span class="node-note">Deterministic correlation, severity, playbook</span></li>
+                <li class="stage-node glass"><span class="node-tech">DynamoDB</span><span class="node-verb">remembers</span><span class="node-note">Authoritative state, re-read by every agent</span></li>
+                <li class="stage-node glass"><span class="node-tech">S3</span><span class="node-verb">proves</span><span class="node-note">Transcripts, evidence, compliance reports</span></li>
+                <li class="stage-node glass"><span class="node-tech">Bedrock</span><span class="node-verb">explains</span><span class="node-note">Investigation and narrative, never authority</span></li>
+            </ol>
 
-                    <div class="card-buttons">
-                        <a href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/blockchain/trading-bot-v4.md" class="card-button--site" target="_blank" rel="noopener">Case study</a>
-                        <a href="https://github.com/jastek69/trading_bot-master" class="card-button--code" target="_blank" rel="noopener">Code</a>
-                    </div>
-                </div>
-                <div class="card card--text">
-                    <p class="card-tags">Solidity · Aave V3 · Balancer</p>
-                    <h3 class="card-title">Leveraged Yield Farm — Aave V3</h3>
-                    <p class="card-description">Compound V2 → Aave V3 migration with zero-fee Balancer flash loans and a health-factor safety model measured on a mainnet fork.</p>
-
-                    <div class="card-buttons">
-                        <a href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/blockchain/yield-farm-aave-v3.md" class="card-button--site" target="_blank" rel="noopener">Case study</a>
-                        <span class="card-button--code card-button--private" title="Private repository — available on request">Private repo</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <iframe width="326" height="212" src="https://youtube.com/embed/nJDNXK3zOsA">
-                    </iframe>
-                    <h3 class="card-title">Video Demo: DefiEcosystem Part 1</h3>
-                    <p class="card-description">Video demo of the DefiEcosystem project</p>
-
-                    <div class="card-buttons">
-                        <a href="https://youtu.be/nJDNXK3zOsA" class="card-button--site" target="_blank">Video</a>
-
-                        <a href="https://github.com/jastek69/DefiEcoSystem" class="card-button--code" target="_blank">Code</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <iframe width="326" height="212" src="https://youtube.com/embed/_SwimVjuV8U">
-                    </iframe>
-                    <h3 class="card-title">Video Demo: DefiEcosystem Part 2</h3>
-                    <p class="card-description">Detailed description of code for DefiEcosystem project</p>
-
-                    <div class="card-buttons">
-                        <a href="https://youtu.be/_SwimVjuV8U" class="card-button--site" target="_blank">Video</a>
-
-                        <a href="https://github.com/jastek69/DefiEcoSystem" class="card-button--code" target="_blank">Code</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="./img/projects/project_3.png" alt="">
-                    <h3 class="card-title">Sobek Market</h3>
-                    <p class="card-description">Sobek Market Exchange for the DES Project. Built using React.js</p>
-
-                    <div class="card-buttons">
-                        <a href="https://empty-hat-4579.on.fleek.co/" class="card-button--site" target="_blank">Site</a>
-                        <a href="https://github.com/jastek69/defiecosystem_frontend_amm1" class="card-button--code" target="_blank">Code</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="./img/projects/project_4.png" alt="">
-                    <h3 class="card-title">Dark Unicorn Market</h3>
-                    <p class="card-description">Dark Unicorn Exchange for the DES Project. Built using React.js</p>
-
-                    <div class="card-buttons">
-                        <a href="https://floral-meadow-0288.on.fleek.co/" class="card-button--site" target="_blank">Site</a>
-                        <a href="https://github.com/jastek69/defiecosystem_frontend2_amm2" class="card-button--code" target="_blank">Code</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="./img/projects/contracts_1.png" alt="">
-                    <h3 class="card-title">Contracts for DefiEcosystem</h3>
-                    <p class="card-description">FlashLoan Pool and Trader contracts</p>
-
-                    <div class="card-buttons">
-                        <a href="https://sepolia.etherscan.io/address/0xa14FFb7b509829b04c26d031D644037b6c8BD272#code" class="card-button--site" target="_blank">FlashLoan Pool Contract</a>
-
-                        <a href="https://sepolia.etherscan.io/address/0x30Ba04E9c1601E0CEab141dD106Bfe6Cc9a3a824#code " class="card-button--site" target="_blank">Trader Contract</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="./img/projects/project_1.png" alt="">
-                    <h3 class="card-title">Decentralized Exchange</h3>
-                    <p class="card-description">A custom Market Exchange site built using React.js and Truffle</p>
-
-                    <div class="card-buttons">
-                        <a href="https://flat-cloud-9330.on.fleek.co/" class="card-button--site" target="_blank">Site</a>
-                        <a href="https://github.com/jastek69/blockchain-developer-bootcamp" class="card-button--code" target="_blank">Code</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="./img/projects/project_2.png" alt="">
-                    <h3 class="card-title">DAO</h3>
-                    <p class="card-description">Custom Decentralized Autonomous Organization built using React.js</p>
-
-                    <div class="card-buttons">
-                        <a href="https://snowy-math-3383.on.fleek.co/" class="card-button--site" target="_blank">Site</a>
-                        <a href="https://github.com/jastek69/DAO" class="card-button--code" target="_blank">Code</a>
-                    </div>
-                </div>
-            </div>
+            <blockquote class="pull glass" data-reveal>
+                <p>Agentic reasoning does not require agentic authority.</p>
+                <footer>The more interesting question isn't “Can an AI agent do this?” It's “Should the agent be allowed to do this?”</footer>
+            </blockquote>
         </section>
 
         <!-- EXPERIENCE -->
+        <section class="section" id="experience" aria-labelledby="experience-title">
+            <div class="section-head" data-reveal>
+                <p class="eyebrow">From game production to platform engineering</p>
+                <h2 id="experience-title">Experience</h2>
+            </div>
 
-        <section class="section experience">
-            <p class="experience-description">
-                I worked in the Video Game and Tech Industry for over 15 years and now build cloud security and AI platform infrastructure on AWS, GCP, and Kubernetes. 
-                I have several years of experience in various aspects of the Tech Industry including Production, Project Management, Consulting, and Support. 
-                Have covered all aspects of Production across all platforms including launch titles having to overcome obstacles in working with new and emerging technologies.
-                <img src="./img/Dot.svg" alt="Blue Dot">
-            </p>
-
-            <h2>Experience</h2>
-            
-                Throughout my years in the Video Game Industry from my start in QA to my roles as a Release Manager and 1st Party management, and in Production. 
-                Have worked with first parties and Licensors including: Microsoft, Nintendo, Sony, Steam, Apple, Marvel, Fox, Hasbro  
-            <br>
-            <br> 
-                I have had the great opportunity to be part of several Game Titles across all platforms from PC, the beginning of Mobile, consoles, Trade Show and Media Tour demos:
-                Quake 3, Soldier of Fortune, Return to Castle Wolfenstein, Start Trek: Elite Force, Tony Hawk franchise, Street Hoops, Call of Duty franchise, Guitar Hero franchise,
-                DJ Hero, Transformers Animated, Prototype, Spider-Man 2, Spider-Man 3, Fantastic Four, Marvel Ultimate Alliance, 
-                Spider-Man: Friend or Foe, Spider-Man: Web of Shadows, Naughty Bear, Terraria, Supremacy MMA, 
-                Way of the Dogg, Pay Day 2, Sniper Elite 3, Defense Grid 2, Battleborn
-            <br>            
-            <br>
-                Through my Coaching career I have been trained and utilized leadership skills,team management, motivating team members, player development, performance reviews, talent assessment, and goal setting. How to deal with different personalities, build personable relationships, and bring them together to work towards one common goals
-            <br>
-            <br>
-            <hr>
-            <br>
-            
-            
-            <div class="experience-cards flex-center">
-                <div class="experience-card">
-                    <h3 class="card-title">
-                        Cloud Security &amp; AI Platform Engineering - <span class="highlight">Independent Projects</span>
+            <div class="timeline">
+                <div class="role glass is-open" data-reveal>
+                    <h3 class="role-head">
+                        <button type="button" class="role-toggle" aria-expanded="true" aria-controls="role-ked">
+                            <span class="role-title">IT Consultant → DevOps Engineer <span class="role-org">KED Law Group, APC</span></span>
+                            <span class="role-when">Jul 2019 – Present</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
                     </h3>
-                    <p class="card-years">2025-present</p>
-
-                    <ul class="card-list">
-                        <li class="card-list-item">Built a serverless SOAR platform on AWS with Terraform: layered RBAC, WAF correlation, and Bedrock agents</li>
-                        <li class="card-list-item">Designed multi-region and multi-cloud networks with Transit Gateway, HA VPN, and BGP</li>
-                        <li class="card-list-item">Kubernetes platform work: EKS, Kong, and an mTLS-gated MCP control plane for AI agents</li>
-                    </ul>
+                    <div class="role-body" id="role-ked">
+                        <div class="role-inner">
+                            <ul>
+                                <li>Progressed from IT consulting into cloud, DevOps, automation, security, and AI-assisted platform engineering, modernizing internal systems through reusable infrastructure and event-driven workflows.</li>
+                                <li>Implemented Terraform Infrastructure as Code and modular deployment patterns across AWS environments.</li>
+                                <li>Built Python/Bash automation and event-driven workflows with Lambda, SNS, SQS, and EventBridge to decouple services and reduce repetitive operational work.</li>
+                                <li>Designed AI-assisted document processing with Amazon Bedrock, including serverless PII detection and redaction using S3 Object Lambda, Comprehend, and Textract.</li>
+                                <li>Implemented GitHub Actions and Jenkins CI/CD, plus CloudWatch monitoring, alerting, and reporting, with IAM least privilege, encryption, and WAF controls.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="experience-card">
-                    <h3 class="card-title">
-                        Dapp University - <span class="highlight">Blockchain Developer</span>
+
+                <div class="role glass" data-reveal>
+                    <h3 class="role-head">
+                        <button type="button" class="role-toggle" aria-expanded="false" aria-controls="role-dapp">
+                            <span class="role-title">Blockchain Developer <span class="role-org">Dapp University</span></span>
+                            <span class="role-when">2022 – 2023</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
                     </h3>
-                    <p class="card-years">2022-2023</p>
-
-                    <ul class="card-list">
-                        <li class="card-list-item">Studied Dapp development with Dapp University</li>
-                        
-                    </ul>
+                    <div class="role-body" id="role-dapp">
+                        <div class="role-inner">
+                            <ul>
+                                <li>Built Solidity contracts and React front ends: a decentralized exchange, a DAO, and a flash-loan DeFi ecosystem with two AMM markets.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="experience-card">
-                    <h3 class="card-title">
-                        IT/Software Consultant - <span class="highlight">KED Law Group, APC</span>
+
+                <div class="role glass" data-reveal>
+                    <h3 class="role-head">
+                        <button type="button" class="role-toggle" aria-expanded="false" aria-controls="role-asurion">
+                            <span class="role-title">Premier Support Technician <span class="role-org">Asurion · Verizon In-Home Support</span></span>
+                            <span class="role-when">2017 – 2020</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
                     </h3>
-                    <p class="card-years">2018-2023</p>
-
-                    <ul class="card-list">
-                        <li class="card-list-item">Implementing and managing software solutions</li>                        
-                        <li class="card-list-item">Hardware and Network Management</li>
-                    </ul>
+                    <div class="role-body" id="role-asurion">
+                        <div class="role-inner">
+                            <ul>
+                                <li>Diagnosed mobile, IoT, application, and home-networking issues.</li>
+                                <li>Selected as a top performer for a support pilot and for technician mentoring.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="experience-card">
-                    <h3 class="card-title">
-                        Mobile Support Technician - <span class="highlight">Verizon/Asurion</span>
+
+                <div class="role glass" data-reveal>
+                    <h3 class="role-head">
+                        <button type="button" class="role-toggle" aria-expanded="false" aria-controls="role-games">
+                            <span class="role-title">Producer · Project &amp; Release Manager <span class="role-org">Activision · 505 Games · 2K Games</span></span>
+                            <span class="role-when">2002 – 2016</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
                     </h3>
-                    <p class="card-years">2016-2018</p>
-
-                    <ul class="card-list">
-                        <li class="card-list-item">Mobile Support technician</li>
-                        <li class="card-list-item">In-home Mobile Support technician</li>
-                    </ul>
+                    <div class="role-body" id="role-games">
+                        <div class="role-inner">
+                            <ul>
+                                <li><strong>2K Games</strong>, Associate Producer (2015–2016): game development and publishing, QA and database workflows, dedicated-server setup, and first-party submissions.</li>
+                                <li><strong>505 Games</strong>, Project Manager / Submission Manager (2011–2014): multi-platform production, certification, risk, and release schedules with developers and platform partners.</li>
+                                <li><strong>Activision</strong>, Associate Producer / Production Coordinator (2002–2011): milestone coordination, QA, build and mastering, and production planning, including launch titles on new hardware.</li>
+                            </ul>
+                            <p class="chips-label">Platform partners &amp; licensors</p>
+                            <ul class="chips">
+                                <li>Microsoft</li><li>Sony</li><li>Nintendo</li><li>Steam</li><li>Apple</li><li>Marvel</li><li>Fox</li><li>Hasbro</li>
+                            </ul>
+                            <p class="chips-label">Selected titles</p>
+                            <ul class="chips chips--quiet">
+                                <li>Call of Duty</li><li>Guitar Hero</li><li>DJ Hero</li><li>Tony Hawk</li><li>Quake III</li><li>Return to Castle Wolfenstein</li><li>Soldier of Fortune</li><li>Star Trek: Elite Force</li><li>Spider-Man 2 &amp; 3</li><li>Spider-Man: Web of Shadows</li><li>Marvel Ultimate Alliance</li><li>Fantastic Four</li><li>Transformers Animated</li><li>Prototype</li><li>Terraria</li><li>Payday 2</li><li>Sniper Elite 3</li><li>Defense Grid 2</li><li>Battleborn</li>
+                            </ul>
+                            <p class="role-note">As a coach, I've also led teams through player development, performance reviews, and goal setting, bringing different personalities together toward one goal.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="experience-card">
-                    <h3 class="card-title">
-                        Associate Producer/Release Manager - <span class="highlight">2K Games, 505 Games, Activision-Blizzard</span>
-                    </h3>
-                    <p class="card-years">2002-2016</p>
-
-                    <ul class="card-list">
-                        <li class="card-list-item">Submissions/Release Manager and Project Manager</li>
-                        <li class="card-list-item">Associate Producer</li>
-                        <li class="card-list-item">QA Lead/ Customer Support</li>
-                    </ul>
-                </div>
-                
             </div>
         </section>
 
         <!-- SKILLS -->
-
-        <section class="section skills">
-            <h2>Skills that I have</h2>
-
-            <div class="skill-cards flex-center">
-                <div class="skill-card flex-center" title="AWS">
-                    <i class="fab fa-aws"></i>
-                </div>
-                <div class="skill-card flex-center" title="Google Cloud">
-                    <i class="fab fa-google"></i>
-                </div>
-                <div class="skill-card flex-center" title="Docker">
-                    <i class="fab fa-docker"></i>
-                </div>
-                <div class="skill-card flex-center" title="Python">
-                    <i class="fab fa-python"></i>
-                </div>
-                <div class="skill-card flex-center" title="Linux">
-                    <i class="fab fa-linux"></i>
-                </div>
-                <div class="skill-card flex-center" title="GitHub Actions">
-                    <i class="fab fa-github"></i>
-                </div>
-                <div class="skill-card flex-center" title="Ethereum / Solidity">
-                    <i class="fab fa-ethereum"></i>
-                </div>
-                <div class="skill-card flex-center">
-                    <i class="fab fa-html5"></i>
-                </div>
-                <div class="skill-card flex-center">
-                    <i class="fab fa-css3-alt"></i>
-                </div>
-                <div class="skill-card flex-center">
-                    <i class="fab fa-js-square"></i>
-                </div>                
-                <div class="skill-card flex-center">
-                    <i class="fab fa-react"></i>
-                </div>
-                <div class="skill-card flex-center">
-                    <i class="fab fa-node-js"></i>
-                </div>
-                <div class="skill-card flex-center">
-                    <i class="fab fa-sass"></i>
-                </div>                
-                <div class="skill-card flex-center">
-                    <i class="fab fa-npm"></i>
-                </div>
+        <section class="section" id="skills" aria-labelledby="skills-title">
+            <div class="section-head" data-reveal>
+                <p class="eyebrow">Core competencies</p>
+                <h2 id="skills-title">Skills</h2>
             </div>
 
-            <ul class="skill-list flex-between">
-                <li><img src="./img/Check.svg" alt="Checkmark">Infrastructure as Code &amp; CI/CD</li>
-                <li><img src="./img/Check.svg" alt="Checkmark">Cloud security &amp; incident response</li>
-                <li><img src="./img/Check.svg" alt="Checkmark">Cross functional teams</li>
-                <li><img src="./img/Check.svg" alt="Checkmark">Agile development & Scrum</li>
-            </ul>
+            <div class="skill-grid">
+                <div class="skill glass" data-reveal><h3><i class="fas fa-cloud" aria-hidden="true"></i>Cloud &amp; Platform Architecture</h3><p>AWS · GCP · multi-cloud · serverless · distributed and event-driven systems</p></div>
+                <div class="skill glass" data-reveal><h3><i class="fas fa-cubes" aria-hidden="true"></i>Infrastructure as Code</h3><p>Terraform · reusable modules · remote state and locking · modular stacks · Packer</p></div>
+                <div class="skill glass" data-reveal><h3><i class="fas fa-dharmachakra" aria-hidden="true"></i>Containers &amp; Kubernetes</h3><p>Docker · Kubernetes · Amazon EKS · GKE · Helm · Kong</p></div>
+                <div class="skill glass" data-reveal><h3><i class="fas fa-code-branch" aria-hidden="true"></i>CI/CD &amp; Automation</h3><p>GitHub Actions (reusable workflows) · Jenkins · Python · Bash · REST APIs</p></div>
+                <div class="skill glass" data-reveal><h3><i class="fas fa-brain" aria-hidden="true"></i>AI Platform Engineering</h3><p>Bedrock Converse · agentic AI · Step Functions · MCP · Pydantic · Vertex AI RAG</p></div>
+                <div class="skill glass" data-reveal><h3><i class="fas fa-shield-alt" aria-hidden="true"></i>Security / DevSecOps</h3><p>Cognito OAuth/RBAC · IAM least privilege · WAF · KMS · Secrets Manager · Snyk</p></div>
+                <div class="skill glass" data-reveal><h3><i class="fas fa-chart-line" aria-hidden="true"></i>Observability &amp; Reliability</h3><p>CloudWatch · Prometheus / Grafana / Loki · alarms · incident workflows · evidence</p></div>
+                <div class="skill glass" data-reveal><h3><i class="fas fa-project-diagram" aria-hidden="true"></i>Cloud Networking</h3><p>VPC · Transit Gateway · Route 53 · ALB/NLB · HA VPN · BGP · Cloud Router</p></div>
+            </div>
+
+            <div class="creds glass" data-reveal>
+                <div class="cred"><i class="fab fa-aws" aria-hidden="true"></i><div><strong>AWS Certified Solutions Architect – Associate</strong></div></div>
+                <div class="cred"><i class="fas fa-graduation-cap" aria-hidden="true"></i><div><strong>UCLA Extension</strong><span>Computer and Information Sciences</span></div></div>
+                <div class="cred"><i class="fas fa-graduation-cap" aria-hidden="true"></i><div><strong>The Ohio State University</strong><span>Computer Science</span></div></div>
+            </div>
         </section>
 
         <!-- CONTACT -->
-
-        <section class="section contact">
-            <div class="contact-links flex-start">
-                <div class="profile-container">
-                    <img class="profile" src="./img/profile.jpg" alt="John Sweeney">
-                    <img class="ring" src="./img/Ring.svg" alt="Ring Border">
+        <section class="section" id="contact" aria-labelledby="contact-title">
+            <div class="contact glass" data-reveal>
+                <p class="eyebrow">Los Angeles, CA</p>
+                <h2 id="contact-title">Let's build something secure.</h2>
+                <p class="section-sub">
+                    I'm a former producer and project manager turned cloud engineer. I build Terraform-managed security,
+                    networking, and AI platform systems on AWS, GCP, and Kubernetes. Private repositories are available for demos.
+                </p>
+                <div class="contact-actions">
+                    <a class="btn btn--primary" href="mailto:jastek.sweeney@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> jastek.sweeney@gmail.com</a>
+                    <button type="button" class="btn copy-email" data-email="jastek.sweeney@gmail.com"><i class="far fa-copy" aria-hidden="true"></i> <span>Copy email</span></button>
+                    <a class="btn btn--icon" href="https://www.linkedin.com/in/john-sweeney-9b97262/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a class="btn btn--icon" href="https://github.com/jastek69/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 </div>
-
-                <ul class="flex-list list-items-circle">
-                    <li>
-                        <a href="https://www.linkedin.com/in/john-sweeney-9b97262/" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/jastek69/" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </li>
-                    
-                </ul>
-
             </div>
-
-            <h1>
-                Get in touch
-            </h1>
-
-            <p>
-                I’m a former Producer and Project Manager turned cloud engineer. I build Terraform-managed security, networking, and AI platform systems on AWS, GCP, and Kubernetes, with a background in Web3 and DeFi smart contracts.
-            </p>
-
-            <ul class="contact-details flex-list">
-                
-                <li>Los Angeles, CA</li>
-                <hr />
-                <li>Available on request</li>
-                <hr />
-                <li><a href="mailto:jastek.sweeney@gmail.com">jastek.sweeney@gmail.com</a></li>
-            </ul>
         </section>
     </main>
-    <footer class="footer flex-center">
-        <p><small>© John Sweeney 2026. All rights reserved.</small></p>
+
+    <footer class="footer">
+        <p><small>© John Sweeney <span data-year>2026</span></small></p>
     </footer>
 
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Focus stage: an opened panel recenters here -->
+    <div class="stage" hidden>
+        <div class="stage-scrim" data-close></div>
+        <div class="stage-panel glass" role="dialog" aria-modal="true" aria-labelledby="stage-title" tabindex="-1">
+            <button type="button" class="stage-close" data-close aria-label="Close panel"><i class="fas fa-times" aria-hidden="true"></i></button>
+            <div class="stage-content"></div>
+        </div>
+    </div>
 
-    <!-- Custom scripts for this template -->
-    <script src="js/resume.js"></script>
+    <p class="sr-only" aria-live="polite" id="announcer"></p>
+
+    <script src="js/site.js" defer></script>
 </body>
 
 </html>
