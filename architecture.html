@@ -13,6 +13,8 @@
 
     <title>Architecture | John Sweeney</title>
 
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -292,7 +294,7 @@
                     </div>
                 </article>
                 <article class="diagram-card glass" id="legal-ai-14" data-domain="ai security" data-kind="mermaid" data-reveal>
-                    <p class="panel-tags">SEIR Legal AI</p>
+                    <p class="panel-tags">SEIR Legal AI: Case Management</p>
                     <h3 class="diagram-title">Platform overview</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
     subgraph Humans
@@ -311,14 +313,14 @@
     DW --> OUT["Draft PDF + citation sidecar [VERIFY]"]
     OS[(OpenSearch<br/>legal authorities)] --> MCPc & BFF
 </script><span class="diagram-status">Rendering…</span></div>
-                    <p class="diagram-caption">A redaction gateway sits in front of every model read. Drafting rides SOAR&#x27;s shared jobs queues.</p>
+                    <p class="diagram-caption">Every matter has a board; AI proposes and the firm decides. A redaction gateway sits in front of every model read, and work rides SOAR&#x27;s shared jobs queues.</p>
                     <div class="diagram-actions">
                         <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Platform overview</span></button>
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/legal-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
                 <article class="diagram-card glass" id="legal-ai-15" data-domain="ai security" data-kind="mermaid" data-reveal>
-                    <p class="panel-tags">SEIR Legal AI</p>
+                    <p class="panel-tags">SEIR Legal AI: Case Management</p>
                     <h3 class="diagram-title">RBAC: two layers</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">sequenceDiagram
   participant User as Attorney_or_Paralegal
@@ -347,7 +349,7 @@
                     </div>
                 </article>
                 <article class="diagram-card glass" id="legal-ai-16" data-domain="ai security" data-kind="mermaid" data-reveal>
-                    <p class="panel-tags">SEIR Legal AI</p>
+                    <p class="panel-tags">SEIR Legal AI: Case Management</p>
                     <h3 class="diagram-title">Backend: drafting, agentic DPC, MCP</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
   subgraph control [Control_planes]
@@ -394,7 +396,7 @@
                     </div>
                 </article>
                 <article class="diagram-card glass" id="legal-ai-17" data-domain="ai security" data-kind="mermaid" data-reveal>
-                    <p class="panel-tags">SEIR Legal AI</p>
+                    <p class="panel-tags">SEIR Legal AI: Case Management</p>
                     <h3 class="diagram-title">Frontend: Counsel Console</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
   browser[Browser] --> cf[CloudFront_SPA]

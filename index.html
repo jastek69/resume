@@ -13,6 +13,8 @@
 
     <title>John Sweeney | Cloud Security &amp; AI Platform Engineer</title>
 
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -193,27 +195,27 @@
 
                 <!-- LEGAL AI -->
                 <article class="panel glass" data-domain="security ai cicd iac" data-reveal>
-                    <p class="panel-tags">Security · AI Platform · Bedrock</p>
-                    <h3 class="panel-title"><button type="button" class="panel-open">SEIR Legal AI</button></h3>
-                    <p class="panel-summary">A legal drafting fleet built on the SOAR platform. Models only ever see redacted records, and IAM enforces it rather than prompts.</p>
+                    <p class="panel-tags">AI Platform · Case Management · Bedrock</p>
+                    <h3 class="panel-title"><button type="button" class="panel-open">SEIR Legal AI: Legal Case Management AI Platform</button></h3>
+                    <p class="panel-summary">Every matter gets a board of deadlines, drafts, and reminders. AI proposes and the firm decides. Built on SEIR, so security isn't bolted on.</p>
                     <p class="panel-meta"><span class="lock"><i class="fas fa-lock" aria-hidden="true"></i> Private · available for demos</span></p>
                     <div class="panel-detail">
-                        <p class="rule">Redact before the model.</p>
+                        <p class="rule">AI proposes; the firm decides.</p>
                         <div class="detail-grid">
                             <div>
                                 <h4>Problem</h4>
                                 <ul>
-                                    <li>Drafting sources hold student identity, medical detail, and education records (PHI and FERPA).</li>
+                                    <li>Recurring deadlines, renewals, and status reports repeat across a whole caseload and are easy to miss.</li>
+                                    <li>Case files hold identity, medical detail, and education records (PHI and FERPA).</li>
                                     <li>Model-confident citations are a liability, and every one has to be verifiable.</li>
-                                    <li>Attorneys and paralegals need different entitlements on web, chat, and API.</li>
                                 </ul>
                             </div>
                             <div>
                                 <h4>Design</h4>
                                 <ul>
-                                    <li>Agent roles are denied <code>s3:GetObject</code>. The only read path is a Comprehend + Comprehend Medical redaction gateway, and scanned PDFs fail closed.</li>
-                                    <li>Graduated autonomy (observe → draft → notify), set live in SSM. No tier ever files, serves, or emails anyone.</li>
-                                    <li>Citation sidecars are marked <code>[VERIFY]</code>. Semantic search stays off until it beats BM25 on a counsel-graded set.</li>
+                                    <li><strong>Every matter has a board</strong> of deadlines, drafts, and reminders. Practice areas such as construction, litigation, and civil plug in under the same enum rules, so the platform scales out without forking.</li>
+                                    <li><strong>AI proposes; the firm decides.</strong> Agents produce drafts and research aids with <code>[VERIFY]</code> citations under graduated autonomy (observe → draft → notify). No tier ever files.</li>
+                                    <li><strong>Security isn't bolted on.</strong> It inherits SEIR's Cognito, WAF, and SOAR protection, and models only see records redacted by Comprehend + Comprehend Medical, enforced by IAM.</li>
                                 </ul>
                             </div>
                             <div>
