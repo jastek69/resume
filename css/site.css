@@ -1236,6 +1236,22 @@ html:not(.js) .panel-meta::after {
 .theme {
     padding: 20px;
     border-radius: var(--r-m);
+    /* Same motion as the principle nodes above (Pydantic, Fusion, DynamoDB, S3, Bedrock) */
+    transition: transform var(--dur-base) var(--ease-spring), box-shadow var(--dur-base) var(--ease-standard);
+}
+
+.theme:hover,
+.js .theme[data-reveal].is-in:hover {
+    transform: translateY(var(--lift-hover));
+    box-shadow: var(--elev-hover);
+}
+
+/* After the scroll-reveal, hand transitions back to the hover motion */
+.js .theme[data-reveal].is-settled {
+    transition:
+        transform var(--dur-base) var(--ease-spring),
+        box-shadow var(--dur-base) var(--ease-standard),
+        opacity var(--dur-base) var(--ease-standard);
 }
 
 .theme h3 {
@@ -1392,9 +1408,18 @@ html:not(.js) .role-inner {
     transition: transform var(--dur-base) var(--ease-spring), box-shadow var(--dur-base) var(--ease-standard);
 }
 
-.skill:hover {
+.skill:hover,
+.js .skill[data-reveal].is-in:hover {
     transform: translateY(var(--lift-hover));
     box-shadow: var(--elev-hover);
+}
+
+/* After the scroll-reveal, hand transitions back to the hover motion */
+.js .skill[data-reveal].is-settled {
+    transition:
+        transform var(--dur-base) var(--ease-spring),
+        box-shadow var(--dur-base) var(--ease-standard),
+        opacity var(--dur-base) var(--ease-standard);
 }
 
 .skill h3 {
@@ -1876,10 +1901,20 @@ html:not(.js) .role-inner {
         opacity var(--dur-base) var(--ease-standard);
 }
 
-.diagram-card:hover {
+.diagram-card:hover,
+.js .diagram-card[data-reveal].is-in:hover {
     transform: translateY(var(--lift-hover));
     box-shadow: var(--elev-hover);
     border-color: var(--glass-edge);
+}
+
+/* After the scroll-reveal, hand transitions back to the hover motion */
+.js .diagram-card[data-reveal].is-settled {
+    transition:
+        transform var(--dur-base) var(--ease-standard),
+        box-shadow var(--dur-base) var(--ease-standard),
+        border-color var(--dur-base) var(--ease-standard),
+        opacity var(--dur-base) var(--ease-standard);
 }
 
 .diagram-card[hidden] {
