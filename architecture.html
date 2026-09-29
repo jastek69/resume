@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Architecture diagrams by John Sweeney — DevOps and cloud architect in Los Angeles, working remotely. Secure platforms on AWS and GCP: Terraform, Kubernetes, event-driven systems, and agentic AI that keeps security authority deterministic.">
+    <meta name="author" content="John Sweeney">
+    <meta name="theme-color" content="#05070d">
+    <meta property="og:title" content="John Sweeney — Cloud Security &amp; AI Platform Engineer">
+    <meta property="og:description" content="Secure, scalable platforms across AWS and GCP. AI investigates, code decides.">
+    <meta property="og:image" content="https://jastek69.github.io/resume/img/profile.jpg">
+
+    <title>Architecture | John Sweeney</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link href="vendor/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+</head>
+
+<body class="page-architecture">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="ambient" aria-hidden="true">
+        <div class="ambient-grid"></div>
+        <div class="orb orb--a"></div>
+        <div class="orb orb--b"></div>
+        <div class="orb orb--c"></div>
+        <div class="spotlight"></div>
+    </div>
+
+    <header class="nav-wrap">
+        <nav class="nav glass" aria-label="Primary">
+            <a class="nav-mark" href="index.html" aria-label="John Sweeney, home">JS</a>
+            <ul class="nav-links">
+                <li><a href="index.html#work">Work</a></li>
+                <li><a href="architecture.html" aria-current="page">Architecture</a></li>
+                <li><a href="index.html#principles">Principles</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li class="nav-bead" aria-hidden="true"></li>
+            </ul>
+            <a class="nav-cta" href="assets/John_Sweeney_Resume.pdf" target="_blank" rel="noopener"><i class="far fa-file-alt" aria-hidden="true"></i> Résumé</a>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="section arch-hero" aria-labelledby="arch-title">
+            <div class="section-head" data-reveal>
+                <p class="eyebrow">Diagrams · 22 views across 12 projects</p>
+                <h1 id="arch-title">Architecture</h1>
+                <p class="section-sub">How the platforms fit together: trust boundaries, data paths, and the order things happen in. Expand any diagram to zoom and pan. Each one links to its full case study.</p>
+            </div>
+
+            <div class="filters glass" role="group" aria-label="Filter diagrams by domain" data-reveal>
+                <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
+                <button type="button" class="filter" data-filter="ai" aria-pressed="false">AI &amp; SEIR1</button>
+                <button type="button" class="filter" data-filter="security" aria-pressed="false">Security &amp; IAM</button>
+                <button type="button" class="filter" data-filter="networking" aria-pressed="false">Networking</button>
+                <button type="button" class="filter" data-filter="kubernetes" aria-pressed="false">Kubernetes</button>
+                <button type="button" class="filter" data-filter="blockchain" aria-pressed="false">Blockchain</button>
+                <span class="filter-bead" aria-hidden="true"></span>
+            </div>
+
+            <div class="diagram-grid" data-filter-grid data-noun="diagram">
+                <article class="diagram-card glass" id="seir-soar-1" data-domain="ai security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">Platform overview</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
+    C[Client] --> WAF[AWS WAFv2]
+    WAF --> APIGW["API Gateway<br/>Cognito authorizer + OAuth scopes"]
+    APIGW --> L["Lambda<br/>group-claim check"]
+    L --> DDB[(DynamoDB<br/>14 tables — system memory)]
+    WAF --> CW[CloudWatch Logs] --> AN[waf analyzer] --> DDB
+    SCHED[EventBridge Scheduler — hourly] --> CORR[correlation agent]
+    DDB --> CORR --> EB{{EventBridge<br/>seir.waf.correlation}}
+    EB --> R["Pyreus — response agent<br/>playbook · incident · Slack/Jira"]
+    EB --> TS["token-safety agent<br/>observe / flag / deny"]
+    EB --> INT["sebek-int-agent<br/>AbuseIPDB · CISA KEV · MITRE"]
+    EB --> TH["sebek-threat-agent<br/>Fusion → SOC report"]
+    R --> SFN["Agentic tier<br/>Step Functions + Bedrock Converse<br/>read-only tools"]
+    R & TH & SFN --> S3[(S3 — Object Lock evidence)]
+    DDB & S3 --> MCP["MCP control plane<br/>26 tools"] --> AN2[Analyst — human review]
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Three-layer authorization in front. EventBridge fans each finding out to four agents, and Bedrock explains but never authorizes.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Platform overview</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="seir-soar-2" data-domain="ai security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">DynamoDB system memory</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TB
+  subgraph ingress["Ingress (not stored in DynamoDB)"]
+    WAF[AWS WAF]
+    EB[EventBridge rules / Scheduler]
+  end
+
+  subgraph cred["Credential safety"]
+    TT[(token-tracking)]
+    TR[(token-revocation)]
+  end
+
+  subgraph detect["Detection pipeline"]
+    WE[(waf-events)]
+    WCF[(waf-correlation-findings)]
+  end
+
+  subgraph respond["Response and intel"]
+    SI[(security-incidents)]
+    ST[(security-threats)]
+    SR[(soc-reports)]
+  end
+
+  subgraph gov["Governance and agentic"]
+    CE[(compliance-evidence)]
+    CF[(compliance-findings)]
+    WI[(waf-investigations)]
+    TI[(token-investigations)]
+    SOI[(soar-interpretations)]
+    EI[(executive-interpretations)]
+  end
+
+  subgraph artifacts["S3 — artifacts only"]
+    S3R[Reports / PDF / MD / JSON]
+    S3T[Investigation transcripts]
+  end
+
+  subgraph control["Control plane"]
+    MCP[MCP read tools]
+  end
+
+  WAF --> WE
+  WE --> WCF
+  EB -->|"seir.waf.correlation (routing only)"| SI
+  EB --> WCF
+  WCF --> SI
+  WCF --> ST
+  ST --> SR
+  SI --> SOI
+  SI --> WI
+  TT --> TI
+  TR --> TT
+  CE --> CF
+  WI --> S3T
+  SI --> S3R
+  SR --> S3R
+
+  MCP --> WCF
+  MCP --> SI
+  MCP --> WI
+  MCP --> TT
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Fourteen tables hold authoritative state. Events route work; agents and MCP tools re-read the table instead of trusting the payload.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: DynamoDB system memory</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="seir-soar-3" data-domain="ai security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">Token lifecycle &amp; layered authorization</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
+    C[Client App] -->|Sign in| CG[Cognito User Pool]
+    CG -->|ID/Access JWT| C
+    C -->|Authorization: Bearer ACCESS_TOKEN| WAF[AWS WAF]
+    WAF --> APIGW[API Gateway REST]
+    APIGW -->|COGNITO_USER_POOLS authorizer + scope| AUTH{JWT and scope valid?}
+    AUTH -->|No| DENY[401/403]
+    AUTH -->|Yes| L1[python_lambda or node_lambda]
+
+    L1 -->|Issue/track| DDB1[(DynamoDB token-tracking)]
+    L1 -->|Revoke check| DDB2[(DynamoDB token-revocation)]
+
+    SCH["EventBridge Scheduler<br/>rate(5 minutes)"] --> DET[detection Lambda]
+    DET -->|Mark stale unused| DDB1
+    DET -->|Optional revoke entry| DDB2
+
+    APIGW --> CW[CloudWatch Logs and Metrics]
+    L1 --> CW
+    DET --> CW
+    CW --> S3[S3 audit archive optional]
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Scope check at API Gateway, group check in Lambda, and a scheduled detector for issued-but-unused tokens.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Token lifecycle &amp; layered authorization</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="legal-ai-4" data-domain="ai security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">SEIR Legal AI</p>
+                    <h3 class="diagram-title">Platform overview</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
+    subgraph Humans
+        CC["Counsel Console<br/>CloudFront SPA · PKCE + MFA"]
+        MCPc["Legal MCP<br/>Claude Code / Cursor"]
+        API["REST /jobs"]
+    end
+    CC --> BFF[HTTP API BFF]
+    BFF & MCPc & API --> AUTH["Cognito groups + scopes<br/>attorney / paralegal"]
+    AUTH --> JOBS[(Shared SOAR jobs<br/>SQS + DynamoDB)]
+    JOBS --> DW[Draft workers]
+    JOBS --> SFN[Agentic DPC<br/>Step Functions + Bedrock]
+    DW & SFN -->|only path to documents| RG["Redaction gateway<br/>Comprehend + Comprehend Medical"]
+    RG --> S3[(S3 case data<br/>KMS · Object Lock audit)]
+    DW & SFN --> BR[Amazon Bedrock]
+    DW --> OUT["Draft PDF + citation sidecar [VERIFY]"]
+    OS[(OpenSearch<br/>legal authorities)] --> MCPc & BFF
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">A redaction gateway sits in front of every model read. Drafting rides SOAR&#x27;s shared jobs queues.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Platform overview</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/legal-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="legal-ai-5" data-domain="ai security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">SEIR Legal AI</p>
+                    <h3 class="diagram-title">RBAC: two layers</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">sequenceDiagram
+  participant User as Attorney_or_Paralegal
+  participant UI as Console_or_MCP_or_curl
+  participant Cognito as Cognito_HostedUI
+  participant APIGW as API_Gateway
+  participant Lambda as BFF_or_submit_job
+  participant SQS as Legal_job_queues
+
+  User->>UI: Sign_in
+  UI->>Cognito: Authorization_Code_PKCE
+  Cognito->>User: MFA_TOTP
+  Cognito->>UI: tokens_with_groups_and_scopes
+  UI->>APIGW: Bearer_access_token
+  APIGW->>APIGW: Layer1_scope_rbac_api_user
+  APIGW->>Lambda: forward_JWT_claims
+  Lambda->>Lambda: Layer2_cognito_groups_entitlements
+  Note over Lambda: attorney_all_three_job_types
+  Note over Lambda: paralegal_no_dpc_draft
+  Lambda->>SQS: enqueue_if_entitled
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">The same entitlements apply in the Counsel Console, over MCP, and on raw /jobs calls.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: RBAC: two layers</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/legal-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="legal-ai-6" data-domain="ai security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">SEIR Legal AI</p>
+                    <h3 class="diagram-title">Backend: drafting, agentic DPC, MCP</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
+  subgraph control [Control_planes]
+    MCP[legal_tools_MCP]
+    REST[POST_jobs]
+    PortalBFF[portal_BFF]
+  end
+
+  subgraph jobs [Shared_modules_jobs]
+    Submit[submit_job]
+    Status[get_job_status]
+    Qsr[SQS_status_report]
+    Qdpc[SQS_dpc_draft]
+    Qdig[SQS_case_digest]
+  end
+
+  subgraph workers [Workers]
+    DW[draft_worker]
+    SFN[dpc_agent_SFN]
+    Redact[redaction_agent]
+  end
+
+  MCP --> Submit
+  REST --> Submit
+  PortalBFF --> Submit
+  MCP --> Status
+  PortalBFF --> Status
+  Submit --> Qsr
+  Submit --> Qdpc
+  Submit --> Qdig
+  Qsr --> DW
+  Qdig --> DW
+  Qdpc --> DW
+  DW -->|agentic| SFN
+  DW --> Redact
+  SFN --> Redact
+  DW --> Bedrock[Bedrock_SSM_prompts]
+  SFN --> Bedrock
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Three control planes share one jobs module. Every worker reads case documents only through redaction.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Backend: drafting, agentic DPC, MCP</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/legal-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="legal-ai-7" data-domain="ai security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">SEIR Legal AI</p>
+                    <h3 class="diagram-title">Frontend: Counsel Console</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
+  browser[Browser] --> cf[CloudFront_SPA]
+  cf --> s3web[S3_portal_assets]
+  browser --> cognito[Cognito_HostedUI_PKCE_MFA]
+  cognito --> browser
+  browser --> bff[HTTP_API_BFF_JWT]
+  bff --> cases[(case_tables)]
+  bff --> submit[jobs_submit]
+  bff --> status[jobs_status]
+  bff --> oah[OpenSearch_OAH_lexical]
+  bff --> drafts[S3_GetObject_drafts]
+  status --> bff
+  drafts --> browser
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">CloudFront SPA, Cognito PKCE + MFA, a JWT-checked BFF, and lexical OpenSearch.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Frontend: Counsel Console</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/legal-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="agent11-8" data-domain="ai security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">Agent 11</p>
+                    <h3 class="diagram-title">Policy-aware model routing</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
+    AG[Operational agent] -->|"AIRequest (capability + classification)"| O[Agent 11 orchestrator]
+    O --> POL["Policy gate<br/>data · model · tool · user"]
+    O --> RT["Model runtime registry<br/>service health"]
+    O --> NET["Network context<br/>endpoint · path · BGP evidence"]
+    POL & RT & NET --> CE[Candidate evaluator]
+    CE -->|compliant route| RD[RoutingDecision] --> MCP[MCP client]
+    CE -->|no compliant route| FC[Fail closed + reason]
+    MCP --> EXT[EXTERNAL_FM]
+    MCP --> CLD["COMPANY_CLOUD_LLM<br/>GCP Llama over IPsec"]
+    MCP --> ONP["COMPANY_ONPREM_LLM<br/>home Ollama via NAT + app-layer protection"]
+    RD & FC --> TEL[Typed telemetry events]
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Classify before transmit. Policy, capability, and network path are evaluated independently before a route is chosen.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Policy-aware model routing</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/agent11/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="vertex-rag-9" data-domain="ai" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">Vertex AI RAG</p>
+                    <h3 class="diagram-title">Keyless cross-cloud retrieval</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
+    subgraph AWS["AWS us-west-2 — SEIR SOAR"]
+        L[Lambda agent<br/>memory/rag.py] --> SSM[(SSM /rag/*<br/>corpus registry)]
+    end
+    L -->|AWS role → WIF token exchange| WIF[Workload Identity Federation]
+    WIF --> SA[GCP service account<br/>least-privilege IAM]
+    SA --> RAG["Vertex AI RAG Engine<br/>4 corpora · text-embedding-005"]
+    RAG -->|contexts| L
+    DOCS[Curated documents] -->|build_*.py / import| RAG
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">AWS Lambda roles call Vertex AI RAG Engine through Workload Identity Federation. Corpus IDs live in SOAR&#x27;s SSM registry.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Keyless cross-cloud retrieval</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/vertex-rag/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="comfyui-10" data-domain="ai" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">ComfyUI GPU Worker</p>
+                    <h3 class="diagram-title">Rebuildable GPU worker</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
+    PK[Packer golden AMI] --> EC2["EC2 GPU — g6 / g5 / g6e<br/>ComfyUI headless + DCV"]
+    TF[Terraform] --> EC2
+    S3[("S3<br/>models · workflows · outputs · certs<br/>TLS-only · lockdown modes")] <-->|sync on boot / on demand| EC2
+    R53["Route 53 A record<br/>60 s TTL"] --> EC2
+    SSM[SSM Parameter Store<br/>DCV password · SOAR contract] --> EC2
+    subgraph SOAR["SEIR SOAR — separate Terraform root"]
+        JOBS["POST /jobs<br/>Cognito + WAF"] --> Q[SQS comfyui_gen]
+    end
+    Q --> EC2
+    EC2 --> DDB[(SOAR jobs table)]
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Packer AMI with S3 as the source of truth, consuming SEIR&#x27;s jobs queue through SSM contracts only.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Rebuildable GPU worker</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/comfyui-stability/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="appi-11" data-domain="networking security" data-kind="image" data-reveal>
+                    <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
+                    <h3 class="diagram-title">Full topology</h3>
+                    <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir-medical-topology.png" alt="Full topology: Tokyo data authority, São Paulo spoke, GCP New York over four HA VPN tunnels, plus the IR and translation pipeline." loading="lazy"><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Tokyo data authority, São Paulo spoke, GCP New York over four HA VPN tunnels, plus the IR and translation pipeline.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Full topology</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="appi-12" data-domain="networking security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
+                    <h3 class="diagram-title">Data paths: PHI only in Tokyo</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
+    D[Doctors worldwide] --> CF["CloudFront + WAF<br/>single URL · TLS · safe-only cache"]
+    CF --> TALB[Tokyo ALB]
+    CF --> SPA[São Paulo ALB]
+    subgraph SP["🇧🇷 São Paulo — stateless"]
+        SPA --> SPASG[EC2 ASG] --> SPTGW[TGW spoke]
+    end
+    subgraph NY["🇺🇸 New York GCP — stateless"]
+        MIG["MIG · no public IPs"] --> ILB["Internal HTTPS ILB<br/>CAS certificate"]
+        MIG --> BGP[Cloud Router — BGP]
+    end
+    subgraph TK["🇯🇵 Tokyo — data authority"]
+        TALB --> TASG[App ASG]
+        TTGW[TGW hub]
+        TASG & TTGW --> RDS[("RDS — PHI<br/>KMS CMK")]
+        SM[Secrets Manager + rotation Lambda] -.-> RDS
+    end
+    SPTGW <==>|TGW peering| TTGW
+    BGP <==>|"HA VPN · 4 IPsec tunnels · BGP"| TTGW
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">São Paulo and New York are stateless compute. Every PHI read and write crosses TGW peering or HA VPN into Tokyo.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Data paths: PHI only in Tokyo</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="appi-13" data-domain="networking security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
+                    <h3 class="diagram-title">Origin cloaking</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
+    R[Request to ALB] --> SG{"Source in CloudFront<br/>managed prefix list?"}
+    SG -->|no| DROP[SG drop — connection fails]
+    SG -->|yes| H{"Secret origin header<br/>present and correct?"}
+    H -->|no| BLK["Listener default rule → 403"]
+    H -->|yes| APP[Forward to app target group]
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">The ALB only answers CloudFront, and only when the secret origin header matches.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Origin cloaking</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="appi-14" data-domain="networking security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
+                    <h3 class="diagram-title">Auto incident response</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">sequenceDiagram
+    autonumber
+    participant CW as CloudWatch alarm
+    participant SNS as SNS trigger topic
+    participant L as IR Lambda
+    participant B as Amazon Bedrock
+    participant TR as Amazon Translate
+    participant S3 as S3 IR reports (versioned, SSE)
+    participant H as On-call human
+    CW->>SNS: ALARM
+    SNS->>L: invoke
+    L->>L: collect evidence bundle<br/>(alarm metadata, Logs Insights, config sources)
+    L->>B: draft incident report
+    L->>TR: localized copy
+    L->>S3: report JSON + MD
+    L->>SNS: reports topic → notify
+    H->>S3: retrieve report + evidence
+    H->>H: verify alarm, raw logs, config (runbook steps 2–5)
+    H->>S3: finalize and archive
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Bedrock drafts and Translate localizes. A human verifies alarm, logs, and config before the report is final.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Auto incident response</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="appi-15" data-domain="networking security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
+                    <h3 class="diagram-title">IR + translation pipeline</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
+  %% LAB4 current deployed workflow (Terraform-verified)
+
+  subgraph Detection["Detection Layer"]
+    CWA["CloudWatch Alarms"]
+    CWL["CloudWatch Logs"]
+    SNSAlerts["SNS: cloudwatch-alarms / regional-alerts"]
+    SNSTrigger["SNS: tokyo-ir-trigger-topic"]
+  end
+
+  subgraph IR["Incident Report Pipeline"]
+    IRLambda["Lambda: tokyo-ir-reporter"]
+    Insights["Logs Insights Queries"]
+    Bedrock["Amazon Bedrock (IR narrative)"]
+    IRS3["S3: IR Reports Bucket (JSON/MD)"]
+    SNSReady["SNS: tokyo-ir-reports-topic"]
+  end
+
+  subgraph Translation["Translation Pipeline"]
+    InBucket["S3: Translation Input Bucket"]
+    TransLambda["Lambda: translation processor"]
+    Translate["Amazon Translate (+ Comprehend detect language)"]
+    OutBucket["S3: Translation Output Bucket"]
+  end
+
+  CWA --> SNSAlerts
+  SNSAlerts --> IRLambda
+  SNSTrigger --> IRLambda
+
+  CWL --> Insights
+  Insights --> IRLambda
+
+  IRLambda --> Bedrock
+  Bedrock --> IRLambda
+  IRLambda --> IRS3
+  IRLambda --> SNSReady
+
+  IRLambda --> InBucket
+  InBucket -->|S3 ObjectCreated Event| TransLambda
+  TransLambda --> Translate
+  Translate --> TransLambda
+  TransLambda --> OutBucket
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Alarm → evidence → Bedrock narrative → report bucket, with an S3-triggered Amazon Translate path for Japanese operations.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: IR + translation pipeline</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="appi-16" data-domain="networking security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
+                    <h3 class="diagram-title">Stack apply order</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
+    SEED[GCP seed] --> T[Tokyo/] --> G[global/] --> N[newyork_gcp/] --> S[saopaulo/]
+    T -. remote state: TGW, VPC, RDS outputs .-> N & S & G
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Four independently deployable stacks, wired through remote state.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Stack apply order</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="zion-17" data-domain="networking" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">Zion: Multi-Region TGW</p>
+                    <h3 class="diagram-title">Seven-region Transit Gateway mesh</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
+    U[Internet users] --> R53["Route 53 geolocation<br/>country · subdivision · continent"]
+    R53 -->|JP / AS / default| TK[Tokyo ALB :80]
+    R53 -->|US| US[New York / California ALBs]
+    R53 -->|EU| LN[London ALB]
+    R53 -->|SA| SP[São Paulo ALB]
+    R53 -->|OC / HK| AP[Sydney / Hong Kong ALBs]
+    subgraph Private["Private — every region"]
+        FWD[Syslog forwarder ASG]
+    end
+    FWD -->|TGW peering| NLB[Tokyo private syslog NLB]
+    NLB --> ST[Tokyo syslog storage ASG]
+    ST --> AUR[("Aurora MySQL<br/>Tokyo private · KMS")]
+    ST -.->|VPC endpoints| SM[Secrets Manager / KMS]
+    FWD & ST -. Alloy agents over TGW .-> PLG["Tokyo Prometheus + Loki + Grafana<br/>(optional)"]
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Apps run anywhere; syslog durability and personal data stay in Japan over private TGW paths.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Seven-region Transit Gateway mesh</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/transit-gateway/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="gcp-hub-18" data-domain="networking security" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">GCP HA VPN Hub-and-Spoke</p>
+                    <h3 class="diagram-title">Hub-and-spoke HA VPN mesh</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
+    subgraph Bootstrap["bootstrap/ — run once"]
+        ME[Owner ADC] -->|impersonate| SA[Per-project Terraform SAs]
+        SA --> ROLES[Custom VPN roles<br/>+ cross-project bindings]
+    end
+    subgraph Infra["infra/ — build / destroy freely"]
+        HUB[NCC hubs] --- SPK[VPN spokes]
+        GW1[HA VPN GW — project A] <-->|2 tunnels · BGP| GW2[HA VPN GW — project B]
+        GW1 --- CR1[Cloud Router ASN 65501]
+        GW2 --- CR2[Cloud Router ASN 65515]
+    end
+    Bootstrap --> Infra
+    TF["tfvars: tunnels = {}"] -->|flatten → for_each| Infra
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">One tunnels map drives gateways, tunnels, router interfaces, and BGP peers. Identities come from impersonation, not key files.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Hub-and-spoke HA VPN mesh</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/gcp-hub-spoke/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="kube-agentic-19" data-domain="kubernetes security ai" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">Kube Agentic</p>
+                    <h3 class="diagram-title">Zero-trust MCP on Kubernetes</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
+    A["AI agent / CronJob<br/>(client cert)"] -->|mTLS| G["nginx mTLS gateway<br/>ns: mcp-gateway"]
+    R["Rogue CA cert"] -.->|rejected — fail closed| G
+    G -->|HTTP :8080| M["MCP control plane<br/>Flask /tools, /tool/*"]
+    M --> GOV["mcp_governance<br/>deterministic playbooks<br/>+ approval gate"]
+    GOV -->|allowed| EX[mcp_executor — kubectl]
+    GOV -->|denied| D[HTTP 403]
+    EX --> K8S["Kubernetes API<br/>RBAC: mcp-server-sa"]
+    M -. narrative only .-> LLM[Vertex / Gemini — optional]
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">An mTLS gateway in front of MCP. kubectl lives only in the executor, and restarts need explicit approval.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Zero-trust MCP on Kubernetes</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/kube-agentic/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="eks-20" data-domain="kubernetes" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">EKS Platform with Kong</p>
+                    <h3 class="diagram-title">EKS with Kong at the edge</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
+    subgraph VPC["VPC 10.100.0.0/16 — 2 AZs"]
+        EKS["EKS control plane<br/>auth mode: API"] --> NG[Private node group<br/>t3.large on-demand]
+        NG --> CSI["EBS CSI driver<br/>Helm + IRSA"]
+        NG --> KONG["Kong ingress controller<br/>key-auth · rate-limit"]
+        NG --> PROM[kube-prometheus-stack<br/>Prometheus · Grafana · Alertmanager]
+    end
+    CLIENT[Client + API key] --> KONG --> SVC[hello Service] --> PODS[Pods]
+    K6[k6 load tests] --> KONG
+    CSI --> EBS[(EBS gp2 volumes)]
+    PROM --> EBS
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Terraform from VPC to runtime, EBS CSI through IRSA, and Kong key-auth and rate limits.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: EKS with Kong at the edge</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/eks-ebs/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="uniswap-21" data-domain="blockchain" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">Uniswap v4 Arbitrage</p>
+                    <h3 class="diagram-title">Self-funding v4 arbitrage</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
+    EV["Swap events<br/>v4 PoolManager (by PoolId) · Sushi pair"] --> CP["checkPrice<br/>slot0 sqrtPriceX96 · Sushi reserves"]
+    CP --> DIR[determineDirection]
+    DIR --> PROF["determineProfitability<br/>V4Quoter + getAmountsOut − gas"]
+    PROF -->|profitable| EX[executeTrade → ArbitrageV4]
+    EX --> UL[poolManager.unlock]
+    UL --> CB["unlockCallback<br/>v4 swap ⇄ Sushi swap<br/>take() … settle()"]
+    CB -->|net < minProfit| REV[revert — only gas lost]
+    CB -->|profit| OWN[profit held for owner]
+    SCAN["npm run scan<br/>Multicall3 probes"] --> RPT[pair-report.json → config]
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Both legs settle inside one unlockCallback; the scanner filters out liquidity mirages first.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Self-funding v4 arbitrage</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/blockchain/trading-bot-v4.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="yield-22" data-domain="blockchain" data-kind="mermaid" data-reveal>
+                    <p class="panel-tags">Leveraged Yield Farm</p>
+                    <h3 class="diagram-title">Flash-loan leveraged position</h3>
+                    <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">sequenceDiagram
+    participant O as Owner
+    participant F as LeveragedYieldFarm
+    participant B as Balancer Vault
+    participant A as Aave V3 Pool
+    O->>F: deposit(initial)
+    F->>B: flashLoan(70% of target)
+    B->>F: receiveFlashLoan
+    F->>A: supply(100%) → aUSDC
+    F->>A: borrow(70%)
+    F->>B: repay (zero fee)
+    Note over F,A: health factor ≈ 1.114
+    O->>F: withdraw()
+    F->>F: read live variableDebt balance
+    F->>B: flashLoan(debt)
+    F->>A: repay(max) · withdraw(max)
+    F->>B: repay
+    F->>O: principal + net interest (+ incentives)
+</script><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">A Balancer flash loan opens and closes the Aave V3 loop, and exit reads live debt.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Flash-loan leveraged position</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/blockchain/yield-farm-aave-v3.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p><small>© John Sweeney <span data-year>2026</span> · Diagrams are simplified views; private repositories are available for demos.</small></p>
+    </footer>
+
+    <div class="stage" hidden>
+        <div class="stage-scrim" data-close></div>
+        <div class="stage-panel glass" role="dialog" aria-modal="true" aria-labelledby="stage-title" tabindex="-1">
+            <button type="button" class="stage-close" data-close aria-label="Close panel"><i class="fas fa-times" aria-hidden="true"></i></button>
+            <div class="stage-content"></div>
+        </div>
+    </div>
+
+    <p class="sr-only" aria-live="polite" id="announcer"></p>
+
+    <script src="js/site.js" defer></script>
+    <script type="module" src="js/architecture.js"></script>
+</body>
+
+</html>

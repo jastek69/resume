@@ -116,23 +116,32 @@
         }
     }
 
+    // A page-level link (e.g. Architecture) starts with the bead on it
+    var pageLink = navList && navList.querySelector('[aria-current="page"]');
+    if (pageLink) requestAnimationFrame(function () { moveBead(navBead, pageLink, navList); });
+
     if ("IntersectionObserver" in window) {
-        var sections = navLinks.map(function (a) { return document.querySelector(a.getAttribute("href")); }).filter(Boolean);
+        var sections = navLinks
+            .map(function (a) { var h = a.getAttribute("href"); return h.charAt(0) === "#" ? document.querySelector(h) : null; })
+            .filter(Boolean);
         var spy = new IntersectionObserver(function (entries) {
             entries.forEach(function (en) {
                 if (en.isIntersecting) setActive(en.target.id);
             });
         }, { rootMargin: "-45% 0px -50% 0px" });
         sections.forEach(function (s) { spy.observe(s); });
-        spy.observe(document.getElementById("top"));
+        var topEl = document.getElementById("top");
+        if (topEl) spy.observe(topEl);
     }
 
     /* ---------- Filters with FLIP reflow ---------- */
 
     var filters = document.querySelector(".filters");
     var filterBead = document.querySelector(".filter-bead");
-    var panelGrid = document.getElementById("panels");
-    var panels = Array.prototype.slice.call(panelGrid.querySelectorAll(".panel"));
+    var panelGrid = document.querySelector("[data-filter-grid]");
+    var panels = panelGrid ? Array.prototype.slice.call(panelGrid.querySelectorAll(":scope > [data-domain]")) : [];
+    var noun = (panelGrid && panelGrid.dataset.noun) || "project";
+    var isWork = !!(panelGrid && panelGrid.id === "panels");
     var archive = document.querySelector(".archive");
     var announcer = document.getElementById("announcer");
 
@@ -150,7 +159,7 @@
         });
         if (archive) archive.hidden = !(value === "all" || value === "blockchain");
 
-        if (announcer) announcer.textContent = shown + " project" + (shown === 1 ? "" : "s") + " shown";
+        if (announcer) announcer.textContent = shown + " " + noun + (shown === 1 ? "" : "s") + " shown";
         if (!motionOn() || !panelGrid.animate) return;
 
         var dur = ms("--dur-slow");
@@ -209,7 +218,7 @@
     }
 
     function activate(p) {
-        if (p === activePanel) return;
+        if (!isWork || p === activePanel) return;
         if (activePanel) activePanel.classList.remove("is-active");
         activePanel = p;
         if (p) {
@@ -228,7 +237,7 @@
         window.scrollBy({ top: delta, behavior: "smooth" });
     }
 
-    panelGrid.addEventListener("pointermove", function (e) {
+    if (isWork) panelGrid.addEventListener("pointermove", function (e) {
         if (e.pointerType !== "mouse" || source) return;
         if (anchor) {
             if (Math.abs(e.clientX - anchor.x) + Math.abs(e.clientY - anchor.y) < 10) return;
@@ -245,7 +254,7 @@
         }
     });
 
-    panelGrid.addEventListener("pointerleave", function () {
+    if (isWork) panelGrid.addEventListener("pointerleave", function () {
         if (anchor) return;
         clearTimeout(dwell);
         activate(null);
@@ -284,7 +293,8 @@
 
         stageContent.innerHTML = "";
         fill(stageContent);
-        stagePanel.classList.toggle("stage-panel--doc", variant === "doc");
+        stagePanel.classList.toggle("stage-panel--doc", variant === "doc" || variant === "diagram");
+        stagePanel.classList.toggle("stage-panel--diagram", variant === "diagram");
 
         var gap = window.innerWidth - root.clientWidth;
         document.body.style.paddingRight = gap ? gap + "px" : "";
@@ -384,7 +394,7 @@
         }
     }
 
-    panelGrid.addEventListener("click", function (e) {
+    if (isWork) panelGrid.addEventListener("click", function (e) {
         if (e.target.closest("a")) return; // repo links inside a card open directly
         var panel = e.target.closest(".panel");
         if (panel) openPanel(panel);
@@ -451,4 +461,5 @@
 
     var year = document.querySelector("[data-year]");
     if (year) year.textContent = new Date().getFullYear();
+    window.Site = { openStage: openStage, closeStage: closePanel, motionOn: motionOn, token: token, ms: ms };
 })();

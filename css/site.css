@@ -1845,3 +1845,164 @@ html:not(.js) .role-inner {
         font-size: 13px;
     }
 }
+
+/* ---------- Architecture page ---------- */
+
+.arch-hero {
+    padding-top: clamp(112px, 14vh, 150px);
+}
+
+.arch-hero h1 {
+    font-size: clamp(40px, 6vw, 64px);
+    margin: 8px 0 12px;
+}
+
+.diagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr));
+    gap: 16px;
+}
+
+.diagram-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 22px;
+    border-radius: var(--r-l);
+    transition:
+        transform var(--dur-base) var(--ease-standard),
+        box-shadow var(--dur-base) var(--ease-standard),
+        border-color var(--dur-base) var(--ease-standard),
+        opacity var(--dur-base) var(--ease-standard);
+}
+
+.diagram-card:hover {
+    transform: translateY(var(--lift-hover));
+    box-shadow: var(--elev-hover);
+    border-color: var(--glass-edge);
+}
+
+.diagram-card[hidden] {
+    display: none;
+}
+
+.diagram-card.is-source {
+    opacity: 0;
+}
+
+.diagram-title {
+    font-size: 19px;
+}
+
+.diagram-preview {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 280px;
+    padding: 14px;
+    overflow: hidden;
+    border-radius: var(--r-m);
+    border: 1px solid var(--line);
+    background: rgba(3, 6, 14, 0.45);
+    cursor: zoom-in;
+}
+
+.diagram-preview svg {
+    max-width: 100% !important;
+    max-height: 100%;
+    height: auto;
+}
+
+.diagram-preview .diagram-img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.diagram-status {
+    color: var(--ink-3);
+    font: 400 13px/1.4 var(--font-mono);
+}
+
+.diagram-caption {
+    flex: 1;
+    color: var(--ink-2);
+    font-size: 14px;
+}
+
+.diagram-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.stage-panel--diagram {
+    width: min(1280px, 100%);
+}
+
+.diagram-toolbar {
+    display: flex;
+    gap: 8px;
+}
+
+.zoom-level {
+    min-width: 72px;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 13px;
+}
+
+.diagram-canvas {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    border-radius: var(--r-m);
+    border: 1px solid var(--line);
+    background: rgba(3, 6, 14, 0.55);
+    cursor: grab;
+    touch-action: pan-x pan-y;
+}
+
+.diagram-canvas.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+}
+
+.zoom-layer {
+    width: 100%;
+    padding: 24px;
+    margin: 0 auto;
+}
+
+.zoom-layer svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none !important;
+}
+
+.diagram-canvas.is-image .zoom-layer img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background: #fff;
+}
+
+@media (max-width: 560px) {
+    .diagram-preview {
+        height: 220px;
+    }
+
+    .stage-panel--diagram {
+        height: calc(100dvh - 24px);
+    }
+}
+
+.foot-sep {
+    margin: 0 12px;
+    color: var(--ink-3);
+}
