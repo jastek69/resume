@@ -41,8 +41,8 @@
     --recede-scale: 0.975;
     --recede-blur: 3px;
     --recede-opacity: 0.35;
-    --grow-hover: 1.045;
-    --shrink-rest: 0.985;
+    --grow-hover: 1.12;
+    --shrink-rest: 0.96;
 
     /* Motion: speed, easing, duration */
     --dur-instant: 90ms;
@@ -853,8 +853,11 @@ body.stage-open .nav-wrap {
         opacity var(--dur-base) var(--ease-standard);
 }
 
-/* The active panel comes forward: larger, lifted, above its neighbors */
-.panel:hover,
+/* The active panel comes forward: larger, lifted, above its neighbors.
+   With JS, "active" is tracked in script (.is-active) so it survives the
+   centering scroll; without JS it falls back to :hover. */
+html:not(.js) .panel:hover,
+.panel.is-active,
 .panel:has(:focus-visible) {
     --ty: var(--lift-hover);
     --s: var(--grow-hover);
@@ -863,9 +866,15 @@ body.stage-open .nav-wrap {
     border-color: var(--glass-edge);
 }
 
+/* Grow inward from the grid edge so edge panels stay on the page */
+.panel {
+    transform-origin: var(--origin, center);
+}
+
 /* …and the rest recede, so the active one stands out */
 @media (hover: hover) {
-    .panels:has(.panel:hover) .panel:not(:hover) {
+    html:not(.js) .panels:has(.panel:hover) .panel:not(:hover),
+    .panels.has-active .panel:not(.is-active) {
         opacity: 0.4;
         --s: var(--shrink-rest);
     }
@@ -1768,6 +1777,11 @@ html:not(.js) .role-inner {
 }
 
 @media (max-width: 560px) {
+    /* Single column: a full-width card has no room to grow sideways */
+    :root {
+        --grow-hover: 1.02;
+    }
+
     .metrics {
         grid-template-columns: repeat(2, 1fr);
     }

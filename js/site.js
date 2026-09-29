@@ -185,12 +185,71 @@
             buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
             moveBead(filterBead, btn, filters);
             btn.scrollIntoView({ block: "nearest", inline: "nearest", behavior: motionOn() ? "smooth" : "auto" });
+            activate(null);
             applyFilter(btn.dataset.filter);
         });
         requestAnimationFrame(function () {
             moveBead(filterBead, filters.querySelector('[aria-pressed="true"]'), filters);
         });
     }
+
+    /* ---------- Work: the pointed-at panel grows and the view centers on it ---------- */
+
+    var activePanel = null;
+    var anchor = null; // pointer position when we last scrolled; hover is frozen until it moves
+    var dwell = null;
+
+    function setOrigin(p) {
+        // Grow inward from the grid edge so edge panels stay on the page
+        var g = panelGrid.getBoundingClientRect();
+        var r = p.getBoundingClientRect();
+        var mid = r.left + r.width / 2;
+        var third = g.width / 3;
+        p.style.setProperty("--origin", mid < g.left + third ? "left center" : mid > g.right - third ? "right center" : "center");
+    }
+
+    function activate(p) {
+        if (p === activePanel) return;
+        if (activePanel) activePanel.classList.remove("is-active");
+        activePanel = p;
+        if (p) {
+            setOrigin(p);
+            p.classList.add("is-active");
+        }
+        panelGrid.classList.toggle("has-active", !!p);
+    }
+
+    function centerOn(p, pt) {
+        if (!motionOn() || source || !p.isConnected || p.hidden) return;
+        var r = p.getBoundingClientRect();
+        var delta = r.top + r.height / 2 - window.innerHeight / 2;
+        if (Math.abs(delta) < 32) return;
+        anchor = pt; // the scroll will slide other panels under a still pointer; ignore that
+        window.scrollBy({ top: delta, behavior: "smooth" });
+    }
+
+    panelGrid.addEventListener("pointermove", function (e) {
+        if (e.pointerType !== "mouse" || source) return;
+        if (anchor) {
+            if (Math.abs(e.clientX - anchor.x) + Math.abs(e.clientY - anchor.y) < 10) return;
+            anchor = null;
+        }
+        var p = e.target.closest(".panel");
+        if (p === activePanel) return;
+        activate(p);
+        clearTimeout(dwell);
+        if (p) {
+            var pt = { x: e.clientX, y: e.clientY };
+            // Center only after the pointer rests, so passing over panels doesn't scroll
+            dwell = setTimeout(function () { if (activePanel === p) centerOn(p, pt); }, 450);
+        }
+    });
+
+    panelGrid.addEventListener("pointerleave", function () {
+        if (anchor) return;
+        clearTimeout(dwell);
+        activate(null);
+    });
 
     window.addEventListener("resize", function () {
         if (activeLink) moveBead(navBead, activeLink, navList);
@@ -250,6 +309,9 @@
     }
 
     function openPanel(panel) {
+        clearTimeout(dwell);
+        anchor = null;
+        activate(null);
         openStage(panel, function (target) {
             // Header + detail, copied from the card
             ["panel-tags", "panel-title", "panel-summary", "panel-meta"].forEach(function (cls) {
