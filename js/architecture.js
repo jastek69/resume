@@ -85,8 +85,11 @@ function setupLoupe(card) {
         copy.setAttribute("width", "100%"); // keep the id: Mermaid scopes its styles to it
     } else {
         copy.loading = "eager";
+        copy.hidden = false; // the real diagram behind a cover image is hidden in the thumbnail
     }
     inner.append(copy);
+    // With a cover image, the pointer moves over the art but the box shows the real diagram
+    const shown = preview.querySelector(".diagram-cover") || src;
     const badge = document.createElement("span");
     badge.className = "loupe-badge";
     loupe.append(inner, badge);
@@ -110,14 +113,13 @@ function setupLoupe(card) {
 
     preview.addEventListener("pointermove", (e) => {
         if (e.pointerType !== "mouse" || !finePointer.matches) return;
-        const r = src.getBoundingClientRect();
+        const r = shown.getBoundingClientRect();
         if (!r.width || !r.height) return;
         const pr = preview.getBoundingClientRect();
 
         // Aim for native size, within sensible bounds, so labels become readable
         const z = Math.min(LOUPE_MAX, Math.max(LOUPE_MIN, naturalWidth(r) / r.width));
         const iw = r.width * z;
-        const ih = r.height * z;
         inner.style.width = iw + "px";
 
         // Position the box under the thumbnail before measuring it
@@ -125,7 +127,10 @@ function setupLoupe(card) {
         card.classList.add("is-magnifying");
         const lw = loupe.clientWidth;
         const lh = loupe.clientHeight;
+        // Measured, not derived: a cover image and its diagram can have different shapes
+        const ih = inner.offsetHeight || r.height * z;
 
+        // Pointer position as a fraction of what's shown maps onto the magnified diagram
         const fx = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
         const fy = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
         const tx = Math.min(Math.max(0, iw - lw), Math.max(0, fx * iw - lw / 2));
@@ -134,11 +139,11 @@ function setupLoupe(card) {
         const cy = ih < lh ? (lh - ih) / 2 : -ty;
         inner.style.transform = "translate(" + cx + "px," + cy + "px)";
 
-        // Lens: the region of the thumbnail shown in the box
-        lens.style.width = Math.min(r.width, lw / z) + "px";
-        lens.style.height = Math.min(r.height, lh / z) + "px";
-        lens.style.left = r.left - pr.left + (iw < lw ? 0 : tx / z) + "px";
-        lens.style.top = r.top - pr.top + (ih < lh ? 0 : ty / z) + "px";
+        // Lens: the matching region of what's shown, in the same fractions
+        lens.style.width = r.width * Math.min(1, lw / iw) + "px";
+        lens.style.height = r.height * Math.min(1, lh / ih) + "px";
+        lens.style.left = r.left - pr.left + (iw < lw ? 0 : r.width * (tx / iw)) + "px";
+        lens.style.top = r.top - pr.top + (ih < lh ? 0 : r.height * (ty / ih)) + "px";
         badge.textContent = z.toFixed(1) + "×";
     });
     preview.addEventListener("pointerleave", hide);
@@ -238,6 +243,7 @@ function buildViewer(card, target) {
     if (img) {
         const big = img.cloneNode(true);
         big.loading = "eager";
+        big.hidden = false; // behind a cover image, the real diagram is hidden in the thumbnail
         layer.append(big);
         canvas.classList.add("is-image");
     } else if (rendered.has(card)) {
