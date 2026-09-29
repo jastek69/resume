@@ -13,10 +13,14 @@
         hover: { file: "menu1.wav", gain: 0.22 },                 // Quake III Arena
         select: { file: "vadim_makes_sound-futuristic-holographic-interface-menu-opening-566063.mp3", gain: 0.45 }, // Bold Comet
         whoosh: { file: "ksjsbwuil-whoosh3-481204.mp3", gain: 0.5 },                  // Bold Comet
-        close: { file: "vadim_makes_sound-futuristic-holographic-interface-menu-opening-566063.mp3", gain: 0.45 }, // Bold Comet
+        // Bold Comet "hologram menu appear"; falls back to the menu-opening sound until that file is added
+        close: { file: ["hologram-menu-appear-ui-by-vadim-makes-sound-royalty-free-music-265645.mp3",
+                        "vadim_makes_sound-futuristic-holographic-interface-menu-opening-566063.mp3"], gain: 0.45 },
+        beep: { file: "ksjsbwuil-ui-beep-4-513914.mp3", gain: 0.4 },
         ambience: { file: "kauasilbershlachparodes-futuristic-ship-ambience-494000.mp3", gain: 0.26 }, // Pixabay
     };
     // Menu items and every glass panel
+    var BEEP_TARGETS = ".pull"; // "Agentic reasoning does not require agentic authority."
     var HOVER_TARGETS = [
         ".nav-links a", ".nav-cta", ".nav-mark", ".filter",
         ".panel", ".diagram-card", ".metric", ".stage-node", ".theme", ".role", ".skill",
@@ -49,11 +53,15 @@
         master.connect(ctx.destination);
         ctx.onstatechange = render;
         Object.keys(SOUNDS).forEach(function (name) {
-            fetch(BASE + SOUNDS[name].file)
-                .then(function (r) { return r.arrayBuffer(); })
-                .then(function (data) { return new Promise(function (ok, bad) { ctx.decodeAudioData(data, ok, bad); }); })
-                .then(function (buf) { buffers[name] = buf; })
-                .catch(function () { /* a missing sound just stays silent */ });
+            var files = [].concat(SOUNDS[name].file);
+            (function tryFile(i) {
+                if (i >= files.length) return; // none available: this sound stays silent
+                fetch(BASE + files[i])
+                    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+                    .then(function (data) { return new Promise(function (ok, bad) { ctx.decodeAudioData(data, ok, bad); }); })
+                    .then(function (buf) { buffers[name] = buf; })
+                    .catch(function () { tryFile(i + 1); });
+            })(0);
         });
         render();
     }
@@ -120,6 +128,15 @@
     if (document.readyState === "complete") whenIdle(setup);
     else window.addEventListener("load", function () { whenIdle(setup); });
 
+    // Was the speaker button pulsing when it was pressed? Registered before the
+    // unlock listeners so it runs first: unlocking clears the hint right away.
+    var enabling = false;
+    ["pointerdown", "keydown"].forEach(function (type) {
+        window.addEventListener(type, function (e) {
+            enabling = !!(btn && btn.contains(e.target) && btn.classList.contains("is-waiting"));
+        }, { capture: true, passive: true });
+    });
+
     ["pointerdown", "keydown", "touchend", "click"].forEach(function (type) {
         window.addEventListener(type, unlock, { capture: true, passive: true });
     });
@@ -127,16 +144,17 @@
     // Hover over menu items and panels: once per element, throttled
     document.addEventListener("pointerover", function (e) {
         if (e.pointerType && e.pointerType !== "mouse") return;
-        var t = e.target.closest && e.target.closest(HOVER_TARGETS);
+        var beep = e.target.closest && e.target.closest(BEEP_TARGETS);
+        var t = beep || (e.target.closest && e.target.closest(HOVER_TARGETS));
         if (!t || t === lastHover) return;
         lastHover = t;
         var now = performance.now();
         if (now - lastHoverAt < 70) return;
         lastHoverAt = now;
-        play("hover");
+        play(beep ? "beep" : "hover");
     });
     document.addEventListener("pointerout", function (e) {
-        var t = e.target.closest && e.target.closest(HOVER_TARGETS);
+        var t = e.target.closest && (e.target.closest(BEEP_TARGETS) || e.target.closest(HOVER_TARGETS));
         if (t && !t.contains(e.relatedTarget)) lastHover = null;
     });
 
@@ -177,8 +195,8 @@
     }
     if (btn) {
         btn.addEventListener("click", function () {
-            // A click while audio is waiting just enables it (unlock ran in the capture phase)
-            if (btn.classList.contains("is-waiting")) { playSoon("hover"); return; }
+            // A press while audio was waiting just enables it
+            if (enabling) { enabling = false; playSoon("hover"); return; }
             muted = !muted;
             try { localStorage.setItem(KEY, muted ? "off" : "on"); } catch (e) { /* ignore */ }
             if (master) master.gain.setTargetAtTime(muted ? 0 : 1, ctx.currentTime, 0.05);
