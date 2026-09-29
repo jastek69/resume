@@ -1,8 +1,23 @@
 /* Architecture page: render Mermaid diagrams lazily, open them in the stage
-   with zoom and pan. Relies on site.js (window.Site) for the stage itself. */
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+   with zoom and pan. Relies on site.js (window.Site) for the stage itself.
+   A classic script (not a module) so the page also works opened from disk;
+   Mermaid comes from the UMD build loaded just before this file. */
+(function () {
+"use strict";
 
-mermaid.initialize({
+const mermaid = window.mermaid;
+
+if (!mermaid) {
+    // CDN blocked or offline: say so instead of "Rendering…" forever
+    document.querySelectorAll(".diagram-card").forEach((card) => {
+        if (!card.querySelector('script[type="text/x-mermaid"]')) return;
+        card.dataset.state = "error";
+        const status = card.querySelector(".diagram-status");
+        if (status) status.textContent = "Couldn't load the diagram renderer. Check your connection and reload.";
+    });
+}
+
+if (mermaid) mermaid.initialize({
     startOnLoad: false,
     securityLevel: "strict",
     theme: "base",
@@ -217,3 +232,4 @@ if (location.hash) {
         setTimeout(() => openDiagram(card, card), 600);
     }
 }
+})();
