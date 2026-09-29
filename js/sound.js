@@ -13,9 +13,7 @@
         hover: { file: "menu1.wav", gain: 0.22 },                 // Quake III Arena
         select: { file: "vadim_makes_sound-futuristic-holographic-interface-menu-opening-566063.mp3", gain: 0.45 }, // Bold Comet
         whoosh: { file: "ksjsbwuil-whoosh3-481204.mp3", gain: 0.5 },                  // Bold Comet
-        // Bold Comet "hologram menu appear"; falls back to the menu-opening sound until that file is added
-        close: { file: ["hologram-menu-appear-ui-by-vadim-makes-sound-royalty-free-music-265645.mp3",
-                        "vadim_makes_sound-futuristic-holographic-interface-menu-opening-566063.mp3"], gain: 0.45 },
+        close: { file: "vadim_makes_sound-hologram-menu-appear-ui-546562.mp3", gain: 0.45 }, // Vadim, Pixabay
         beep: { file: "ksjsbwuil-ui-beep-4-513914.mp3", gain: 0.4 },
         ambience: { file: "kauasilbershlachparodes-futuristic-ship-ambience-494000.mp3", gain: 0.26 }, // Pixabay
     };

@@ -2401,3 +2401,11 @@ html:not(.js) .role-inner {
         box-shadow: 0 0 0 2px rgba(110, 231, 255, 0.45);
     }
 }
+
+.footer .credits a {
+    color: var(--ink-2);
+}
+
+.footer .credits a:hover {
+    color: var(--accent);
+}
