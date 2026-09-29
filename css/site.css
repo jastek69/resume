@@ -2312,3 +2312,38 @@ html:not(.js) .role-inner {
         font-size: 13px;
     }
 }
+
+/* ---------- Sound toggle ---------- */
+
+.sound-toggle {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent);
+    font-size: 14px;
+    cursor: pointer;
+    transition:
+        transform var(--dur-fast) var(--ease-spring),
+        background-color var(--dur-fast) var(--ease-standard),
+        color var(--dur-fast) var(--ease-standard);
+}
+
+.sound-toggle:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sound-toggle[aria-pressed="false"] {
+    color: var(--ink-3);
+}
+
+.footer .credits {
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: 0.8;
+}
