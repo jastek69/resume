@@ -50,7 +50,7 @@
     <main id="main">
         <section class="section arch-hero" aria-labelledby="arch-title">
             <div class="section-head" data-reveal>
-                <p class="eyebrow">Diagrams · 22 views across 12 projects</p>
+                <p class="eyebrow">Diagrams · 32 views across 12 projects</p>
                 <h1 id="arch-title">Architecture</h1>
                 <p class="section-sub">How the platforms fit together: trust boundaries, data paths, and the order things happen in. Expand any diagram to zoom and pan. Each one links to its full case study.</p>
             </div>
@@ -66,7 +66,17 @@
             </div>
 
             <div class="diagram-grid" data-filter-grid data-noun="diagram">
-                <article class="diagram-card glass" id="seir-soar-1" data-domain="ai security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="seir-soar-1" data-domain="ai security" data-kind="image" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">Deterministic authority + agentic investigation</h3>
+                    <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir/executive-workflow.webp" alt="Deterministic authority + agentic investigation: Eight layers from signal to human review. Pydantic types every signal, Fusion decides, DynamoDB remembers, S3 proves, and Bedrock explains." loading="lazy"><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Eight layers from signal to human review. Pydantic types every signal, Fusion decides, DynamoDB remembers, S3 proves, and Bedrock explains.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Deterministic authority + agentic investigation</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="seir-soar-2" data-domain="ai security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">SEIR1: Serverless SOAR</p>
                     <h3 class="diagram-title">Platform overview</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
@@ -91,7 +101,37 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="seir-soar-2" data-domain="ai security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="seir-soar-3" data-domain="ai security" data-kind="image" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">End-to-end auth and token/SOAR flow</h3>
+                    <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir/auth-token-soar-flow.jpg" alt="End-to-end auth and token/SOAR flow: JWT validation sits at the API Gateway authorizer. A scheduled detector finds unused tokens, and Bedrock writes the narrative." loading="lazy"><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">JWT validation sits at the API Gateway authorizer. A scheduled detector finds unused tokens, and Bedrock writes the narrative.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: End-to-end auth and token/SOAR flow</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="seir-soar-4" data-domain="ai security" data-kind="image" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">Agent / WAF-correlation flow</h3>
+                    <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir/waf-correlation-flow.jpg" alt="Agent / WAF-correlation flow: Each correlated finding fans out to four parallel agents, and threat assessment triggers a fifth hop for the SOC report." loading="lazy"><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Each correlated finding fans out to four parallel agents, and threat assessment triggers a fifth hop for the SOC report.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Agent / WAF-correlation flow</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="seir-soar-5" data-domain="ai security" data-kind="image" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">Trigger topology</h3>
+                    <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir/trigger-topology.webp" alt="Trigger topology: What starts each agent: the scheduler, a finding event, a Step Functions StartExecution, a downstream event, or a job failure." loading="lazy"><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">What starts each agent: the scheduler, a finding event, a Step Functions StartExecution, a downstream event, or a job failure.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Trigger topology</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="seir-soar-6" data-domain="ai security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">SEIR1: Serverless SOAR</p>
                     <h3 class="diagram-title">DynamoDB system memory</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TB
@@ -161,7 +201,17 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="seir-soar-3" data-domain="ai security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="seir-soar-7" data-domain="ai security" data-kind="image" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">RBAC model and component reference</h3>
+                    <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir/rbac-model.jpg" alt="RBAC model and component reference: Two independent layers ask different questions: does the token carry the scope, and does the caller&#x27;s group grant the action?" loading="lazy"><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Two independent layers ask different questions: does the token carry the scope, and does the caller&#x27;s group grant the action?</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: RBAC model and component reference</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="seir-soar-8" data-domain="ai security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">SEIR1: Serverless SOAR</p>
                     <h3 class="diagram-title">Token lifecycle &amp; layered authorization</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
@@ -191,7 +241,57 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="legal-ai-4" data-domain="ai security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="seir-soar-9" data-domain="ai security" data-kind="image" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">MCP + Sephiroth</h3>
+                    <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir/mcp-sephiroth.jpg" alt="MCP + Sephiroth: A hosted MCP server lets claude.ai call SEIR tools under real Cognito RBAC, and an EC2 rig drives the pipeline end to end." loading="lazy"><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">A hosted MCP server lets claude.ai call SEIR tools under real Cognito RBAC, and an EC2 rig drives the pipeline end to end.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: MCP + Sephiroth</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="seir-soar-10" data-domain="ai security" data-kind="image" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">Heralds dashboard</h3>
+                    <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir/heralds-dashboard.jpg" alt="Heralds dashboard: The operator view of every agent: calls, errors, latency, and what triggers it, grouped by role." loading="lazy"><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">The operator view of every agent: calls, errors, latency, and what triggers it, grouped by role.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Heralds dashboard</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="seir-soar-11" data-domain="ai security" data-kind="image" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">Heralds: detection and action</h3>
+                    <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir/heralds-detection-action.jpg" alt="Heralds: detection and action: Deterministic detectors and responders, each with its schedule or event trigger and recent session history." loading="lazy"><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Deterministic detectors and responders, each with its schedule or event trigger and recent session history.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Heralds: detection and action</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="seir-soar-12" data-domain="ai security" data-kind="image" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">Heralds: agentic tier</h3>
+                    <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir/heralds-agentic.jpg" alt="Heralds: agentic tier: Four Step Functions + Bedrock investigators. The model picks the next read-only lookup; Step Functions owns the loop." loading="lazy"><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Four Step Functions + Bedrock investigators. The model picks the next read-only lookup; Step Functions owns the loop.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Heralds: agentic tier</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="seir-soar-13" data-domain="ai security" data-kind="image" data-reveal>
+                    <p class="panel-tags">SEIR1: Serverless SOAR</p>
+                    <h3 class="diagram-title">Heralds: chief herald and reporting</h3>
+                    <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir/heralds-reporting.jpg" alt="Heralds: chief herald and reporting: Reporting agents carry findings back as SOC, compliance, and executive reports." loading="lazy"><span class="diagram-status">Rendering…</span></div>
+                    <p class="diagram-caption">Reporting agents carry findings back as SOC, compliance, and executive reports.</p>
+                    <div class="diagram-actions">
+                        <button type="button" class="btn btn--primary diagram-open"><i class="fas fa-expand" aria-hidden="true"></i> Expand<span class="sr-only">: Heralds: chief herald and reporting</span></button>
+                        <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/serverless/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
+                    </div>
+                </article>
+                <article class="diagram-card glass" id="legal-ai-14" data-domain="ai security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">SEIR Legal AI</p>
                     <h3 class="diagram-title">Platform overview</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
@@ -217,7 +317,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/legal-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="legal-ai-5" data-domain="ai security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="legal-ai-15" data-domain="ai security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">SEIR Legal AI</p>
                     <h3 class="diagram-title">RBAC: two layers</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">sequenceDiagram
@@ -246,7 +346,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/legal-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="legal-ai-6" data-domain="ai security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="legal-ai-16" data-domain="ai security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">SEIR Legal AI</p>
                     <h3 class="diagram-title">Backend: drafting, agentic DPC, MCP</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
@@ -293,7 +393,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/legal-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="legal-ai-7" data-domain="ai security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="legal-ai-17" data-domain="ai security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">SEIR Legal AI</p>
                     <h3 class="diagram-title">Frontend: Counsel Console</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
@@ -316,7 +416,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/legal-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="agent11-8" data-domain="ai security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="agent11-18" data-domain="ai security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">Agent 11</p>
                     <h3 class="diagram-title">Policy-aware model routing</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
@@ -338,7 +438,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/agent11/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="vertex-rag-9" data-domain="ai" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="vertex-rag-19" data-domain="ai" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">Vertex AI RAG</p>
                     <h3 class="diagram-title">Keyless cross-cloud retrieval</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
@@ -357,7 +457,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/vertex-rag/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="comfyui-10" data-domain="ai" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="comfyui-20" data-domain="ai" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">ComfyUI GPU Worker</p>
                     <h3 class="diagram-title">Rebuildable GPU worker</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
@@ -378,7 +478,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/comfyui-stability/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="appi-11" data-domain="networking security" data-kind="image" data-reveal>
+                <article class="diagram-card glass" id="appi-21" data-domain="networking security" data-kind="image" data-reveal>
                     <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
                     <h3 class="diagram-title">Full topology</h3>
                     <div class="diagram-preview" aria-hidden="true"><img class="diagram-img" src="assets/diagrams/seir-medical-topology.png" alt="Full topology: Tokyo data authority, São Paulo spoke, GCP New York over four HA VPN tunnels, plus the IR and translation pipeline." loading="lazy"><span class="diagram-status">Rendering…</span></div>
@@ -388,7 +488,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="appi-12" data-domain="networking security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="appi-22" data-domain="networking security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
                     <h3 class="diagram-title">Data paths: PHI only in Tokyo</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
@@ -417,7 +517,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="appi-13" data-domain="networking security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="appi-23" data-domain="networking security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
                     <h3 class="diagram-title">Origin cloaking</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
@@ -433,7 +533,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="appi-14" data-domain="networking security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="appi-24" data-domain="networking security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
                     <h3 class="diagram-title">Auto incident response</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">sequenceDiagram
@@ -462,7 +562,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="appi-15" data-domain="networking security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="appi-25" data-domain="networking security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
                     <h3 class="diagram-title">IR + translation pipeline</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
@@ -514,7 +614,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="appi-16" data-domain="networking security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="appi-26" data-domain="networking security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">Regulated Multi-Cloud (APPI)</p>
                     <h3 class="diagram-title">Stack apply order</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
@@ -527,7 +627,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/healthcare-cross-platform/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="zion-17" data-domain="networking" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="zion-27" data-domain="networking" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">Zion: Multi-Region TGW</p>
                     <h3 class="diagram-title">Seven-region Transit Gateway mesh</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
@@ -552,7 +652,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/transit-gateway/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="gcp-hub-18" data-domain="networking security" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="gcp-hub-28" data-domain="networking security" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">GCP HA VPN Hub-and-Spoke</p>
                     <h3 class="diagram-title">Hub-and-spoke HA VPN mesh</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart LR
@@ -575,7 +675,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/gcp-hub-spoke/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="kube-agentic-19" data-domain="kubernetes security ai" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="kube-agentic-29" data-domain="kubernetes security ai" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">Kube Agentic</p>
                     <h3 class="diagram-title">Zero-trust MCP on Kubernetes</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
@@ -594,7 +694,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/kube-agentic/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="eks-20" data-domain="kubernetes" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="eks-30" data-domain="kubernetes" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">EKS Platform with Kong</p>
                     <h3 class="diagram-title">EKS with Kong at the edge</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
@@ -615,7 +715,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/eks-ebs/README.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="uniswap-21" data-domain="blockchain" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="uniswap-31" data-domain="blockchain" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">Uniswap v4 Arbitrage</p>
                     <h3 class="diagram-title">Self-funding v4 arbitrage</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">flowchart TD
@@ -635,7 +735,7 @@
                         <a class="text-link" href="https://github.com/jastek69/jastek69/blob/main/cloud-architecture-portfolio/architectures/blockchain/trading-bot-v4.md" target="_blank" rel="noopener">Case study <img src="./img/ArrowUpRight.svg" alt="" width="12" height="12"></a>
                     </div>
                 </article>
-                <article class="diagram-card glass" id="yield-22" data-domain="blockchain" data-kind="mermaid" data-reveal>
+                <article class="diagram-card glass" id="yield-32" data-domain="blockchain" data-kind="mermaid" data-reveal>
                     <p class="panel-tags">Leveraged Yield Farm</p>
                     <h3 class="diagram-title">Flash-loan leveraged position</h3>
                     <div class="diagram-preview" aria-hidden="true"><script type="text/x-mermaid">sequenceDiagram
