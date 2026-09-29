@@ -1,0 +1,11 @@
+# Local source material and tooling — never published.
+# (Only root-level PDFs/DOCX; assets/John_Sweeney_Resume.pdf is published.)
+/*.pdf
+/*.docx
+/tools/
+.vscode/
+
+# Sound notes and sounds not used by the site
+assets/sounds/sounds.txt
+assets/sounds/n_health.wav
+assets/sounds/dragon-studio-futuristic-transition-499653.mp3
