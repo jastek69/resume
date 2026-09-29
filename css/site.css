@@ -2229,3 +2229,86 @@ html:not(.js) .role-inner {
 .diagram-card.is-magnifying .diagram-cover {
     filter: brightness(0.75);
 }
+
+/* ---------- AWS certification: hero chip and Skills badge ---------- */
+
+.cert-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 18px;
+    padding: 6px 14px 6px 6px;
+    border-radius: var(--r-pill);
+    border: 1px solid rgba(110, 231, 255, 0.28);
+    background: rgba(40, 60, 200, 0.14);
+    color: var(--ink);
+    font: 500 14px/1.2 var(--font-body);
+    text-decoration: none;
+    transform-origin: left center;
+    transition:
+        transform var(--dur-base) var(--ease-spring),
+        border-color var(--dur-fast) var(--ease-standard),
+        background-color var(--dur-fast) var(--ease-standard);
+}
+
+.cert-chip img {
+    width: 26px;
+    height: 26px;
+    flex: none;
+}
+
+.cert-chip .fa-check-circle {
+    color: var(--ok);
+}
+
+.cert-chip:hover,
+.cert-chip:focus-visible {
+    transform: scale(1.06);
+    border-color: rgba(110, 231, 255, 0.55);
+    background: rgba(40, 60, 200, 0.24);
+}
+
+.cred--badge {
+    align-items: center;
+}
+
+.cred-badge {
+    flex: none;
+    display: block;
+    transition: transform var(--dur-base) var(--ease-spring), filter var(--dur-base) var(--ease-standard);
+}
+
+.cred-badge img {
+    display: block;
+    width: 76px;
+    height: 76px;
+}
+
+.cred--badge:hover .cred-badge {
+    transform: scale(1.1) rotate(-4deg);
+    filter: drop-shadow(0 8px 20px rgba(59, 91, 255, 0.45));
+}
+
+.cred-verify {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    color: var(--accent);
+    font: 500 13px/1.3 var(--font-mono);
+    text-decoration: none;
+}
+
+.cred-verify:hover {
+    text-decoration: underline;
+}
+
+.cred-verify i {
+    font-size: 11px;
+}
+
+@media (max-width: 560px) {
+    .cert-chip span:not(.sr-only) {
+        font-size: 13px;
+    }
+}
