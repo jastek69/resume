@@ -2202,3 +2202,30 @@ html:not(.js) .role-inner {
         display: none;
     }
 }
+
+/* Cover art: a thematic image stands in for the thumbnail; the real diagram
+   (hidden) still feeds the magnifier and the viewer */
+.diagram-preview:has(.diagram-cover) {
+    padding: 0;
+}
+
+.diagram-cover {
+    /* Pinned to the thumbnail box; a percentage height alone doesn't hold in the grid */
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 80%;
+    border-radius: inherit;
+    transition: transform var(--dur-slow) var(--ease-emphasized), filter var(--dur-base) var(--ease-standard);
+}
+
+.diagram-card:hover .diagram-cover {
+    transform: scale(1.03);
+}
+
+.diagram-card.is-magnifying .diagram-cover {
+    filter: brightness(0.75);
+}
