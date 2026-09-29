@@ -2006,3 +2006,93 @@ html:not(.js) .role-inner {
     margin: 0 12px;
     color: var(--ink-3);
 }
+
+/* ---------- Magnifier under the diagram thumbnail ---------- */
+
+.diagram-card:hover {
+    z-index: 3; /* the preview box may overlap the card below */
+}
+
+.diagram-loupe {
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    top: var(--loupe-top, 320px);
+    z-index: 4;
+    height: 300px;
+    overflow: hidden;
+    border-radius: var(--r-m);
+    border: 1px solid rgba(110, 231, 255, 0.45);
+    background: #070c18;
+    box-shadow: var(--elev-focus), 0 0 0 4px rgba(110, 231, 255, 0.06);
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+    transform-origin: 50% 0;
+    pointer-events: none;
+    transition:
+        opacity var(--dur-base) var(--ease-standard),
+        transform var(--dur-base) var(--ease-emphasized);
+}
+
+.diagram-card.is-magnifying .diagram-loupe {
+    opacity: 1;
+    transform: none;
+}
+
+.loupe-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    will-change: transform;
+}
+
+.loupe-inner svg,
+.loupe-inner img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none !important;
+}
+
+.loupe-inner img {
+    background: #fff;
+}
+
+.loupe-badge {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 4px 8px;
+    border-radius: var(--r-pill);
+    background: rgba(5, 7, 13, 0.8);
+    border: 1px solid var(--glass-border);
+    color: var(--accent);
+    font: 500 12px/1 var(--font-mono);
+}
+
+.loupe-lens {
+    position: absolute;
+    border: 1.5px solid var(--accent);
+    border-radius: 6px;
+    background: rgba(110, 231, 255, 0.08);
+    box-shadow: 0 0 0 9999px rgba(3, 6, 14, 0.35);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--dur-fast) var(--ease-standard);
+}
+
+.diagram-card.is-magnifying .loupe-lens {
+    opacity: 1;
+}
+
+.diagram-card.is-magnifying .diagram-preview {
+    cursor: crosshair;
+}
+
+@media (hover: none), (pointer: coarse) {
+    .diagram-loupe,
+    .loupe-lens {
+        display: none;
+    }
+}

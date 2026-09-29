@@ -61,9 +61,103 @@ const rendered = new Map(); // card -> svg markup
 let queue = Promise.resolve();
 let seq = 0;
 
+/* ---------- Magnifier: a preview box under the thumbnail enlarges what the pointer is over ---------- */
+
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+const LOUPE_MIN = 2;
+const LOUPE_MAX = 4;
+
+function setupLoupe(card) {
+    if (card.querySelector(".diagram-loupe")) return;
+    const preview = card.querySelector(".diagram-preview");
+    const src = preview.querySelector("svg, .diagram-img");
+    if (!src) return;
+
+    const loupe = document.createElement("div");
+    loupe.className = "diagram-loupe";
+    loupe.setAttribute("aria-hidden", "true");
+    const inner = document.createElement("div");
+    inner.className = "loupe-inner";
+    const copy = src.cloneNode(true);
+    if (copy.tagName.toLowerCase() === "svg") {
+        copy.removeAttribute("style"); // drop Mermaid's max-width so the copy can scale up
+        copy.removeAttribute("height");
+        copy.setAttribute("width", "100%"); // keep the id: Mermaid scopes its styles to it
+    } else {
+        copy.loading = "eager";
+    }
+    inner.append(copy);
+    const badge = document.createElement("span");
+    badge.className = "loupe-badge";
+    loupe.append(inner, badge);
+    card.append(loupe);
+
+    const lens = document.createElement("span");
+    lens.className = "loupe-lens";
+    preview.append(lens);
+
+    function naturalWidth(r) {
+        if (src.tagName.toLowerCase() === "svg") {
+            const vb = src.viewBox && src.viewBox.baseVal;
+            return vb && vb.width ? vb.width : r.width * 2.5;
+        }
+        return src.naturalWidth || r.width * 2.5;
+    }
+
+    function hide() {
+        card.classList.remove("is-magnifying");
+    }
+
+    preview.addEventListener("pointermove", (e) => {
+        if (e.pointerType !== "mouse" || !finePointer.matches) return;
+        const r = src.getBoundingClientRect();
+        if (!r.width || !r.height) return;
+        const pr = preview.getBoundingClientRect();
+
+        // Aim for native size, within sensible bounds, so labels become readable
+        const z = Math.min(LOUPE_MAX, Math.max(LOUPE_MIN, naturalWidth(r) / r.width));
+        const iw = r.width * z;
+        const ih = r.height * z;
+        inner.style.width = iw + "px";
+
+        // Position the box under the thumbnail before measuring it
+        card.style.setProperty("--loupe-top", preview.offsetTop + preview.offsetHeight + 10 + "px");
+        card.classList.add("is-magnifying");
+        const lw = loupe.clientWidth;
+        const lh = loupe.clientHeight;
+
+        const fx = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+        const fy = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+        const tx = Math.min(Math.max(0, iw - lw), Math.max(0, fx * iw - lw / 2));
+        const ty = Math.min(Math.max(0, ih - lh), Math.max(0, fy * ih - lh / 2));
+        const cx = iw < lw ? (lw - iw) / 2 : -tx; // center small content instead of pinning left
+        const cy = ih < lh ? (lh - ih) / 2 : -ty;
+        inner.style.transform = "translate(" + cx + "px," + cy + "px)";
+
+        // Lens: the region of the thumbnail shown in the box
+        lens.style.width = Math.min(r.width, lw / z) + "px";
+        lens.style.height = Math.min(r.height, lh / z) + "px";
+        lens.style.left = r.left - pr.left + (iw < lw ? 0 : tx / z) + "px";
+        lens.style.top = r.top - pr.top + (ih < lh ? 0 : ty / z) + "px";
+        badge.textContent = z.toFixed(1) + "×";
+    });
+    preview.addEventListener("pointerleave", hide);
+    card.addEventListener("click", hide);
+}
+
 // Mermaid is not safe to run concurrently, so renders go through one queue
 function render(card) {
     if (card.dataset.state) return queue;
+    // Image diagrams need no rendering, so they don't wait behind Mermaid
+    if (!card.querySelector('script[type="text/x-mermaid"]')) {
+        const status = card.querySelector(".diagram-status");
+        if (status) status.remove();
+        card.dataset.state = "done";
+        const img = card.querySelector(".diagram-img");
+        if (img && !img.complete) img.addEventListener("load", () => setupLoupe(card), { once: true });
+        else setupLoupe(card);
+        return queue;
+    }
     card.dataset.state = "pending";
     queue = queue.then(async () => {
         const preview = card.querySelector(".diagram-preview");
@@ -73,6 +167,7 @@ function render(card) {
             // Image diagrams need no rendering
             if (status) status.remove();
             card.dataset.state = "done";
+            setupLoupe(card);
             return;
         }
         try {
@@ -81,6 +176,7 @@ function render(card) {
             preview.insertAdjacentHTML("beforeend", svg);
             if (status) status.remove();
             card.dataset.state = "done";
+            setupLoupe(card);
         } catch (err) {
             if (status) status.textContent = "This diagram couldn't be rendered.";
             card.dataset.state = "error";
