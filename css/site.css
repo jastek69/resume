@@ -2096,3 +2096,109 @@ html:not(.js) .role-inner {
         display: none;
     }
 }
+
+/* ---------- Work footer: links that swell, and a teaser of the Architecture page ---------- */
+
+.foot-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 14px 16px;
+}
+
+.foot-links .foot-sep {
+    margin: 0;
+    line-height: 26px;
+}
+
+.foot-item {
+    display: grid;
+    gap: 14px;
+    justify-items: start;
+    /* Fixed column: otherwise the teaser image's intrinsic 1100px width
+       inflates this item and pushes the GitHub link onto the next row */
+    width: min(480px, 100%);
+}
+
+.grow-link {
+    font-size: 16px;
+    transform-origin: left center;
+    transition:
+        transform var(--dur-base) var(--ease-spring),
+        color var(--dur-fast) var(--ease-standard),
+        border-color var(--dur-fast) var(--ease-standard);
+}
+
+.grow-link:hover,
+.grow-link:focus-visible {
+    transform: scale(1.18);
+    color: #9cf0ff;
+}
+
+.arch-teaser {
+    display: block;
+    width: 100%;
+    padding: 6px;
+    border-radius: var(--r-m);
+    text-decoration: none;
+    transform-origin: left top;
+    transition:
+        transform var(--dur-base) var(--ease-spring),
+        box-shadow var(--dur-base) var(--ease-standard),
+        border-color var(--dur-base) var(--ease-standard);
+}
+
+.arch-teaser-media {
+    display: block;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+.arch-teaser-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform var(--dur-slow) var(--ease-emphasized);
+}
+
+.arch-teaser-cap {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 8px 3px;
+    color: var(--ink-2);
+    font: 500 12px/1.2 var(--font-mono);
+}
+
+.arch-teaser-cta {
+    color: var(--accent);
+}
+
+.arch-teaser-cta i {
+    margin-left: 4px;
+    transition: transform var(--dur-base) var(--ease-spring);
+}
+
+/* The teaser responds to its own hover and to hovering the link above it */
+.arch-teaser:hover,
+.foot-item:has(.grow-link:hover) .arch-teaser {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: var(--elev-hover);
+    border-color: var(--glass-edge);
+}
+
+.arch-teaser:hover .arch-teaser-media img,
+.foot-item:has(.grow-link:hover) .arch-teaser-media img {
+    transform: scale(1.08);
+}
+
+.arch-teaser:hover .arch-teaser-cta i,
+.foot-item:has(.grow-link:hover) .arch-teaser-cta i {
+    transform: translateX(4px);
+}
+
+@media (max-width: 560px) {
+    .foot-links .foot-sep {
+        display: none;
+    }
+}
